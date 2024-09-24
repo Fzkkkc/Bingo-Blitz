@@ -36,7 +36,6 @@ namespace UserInterface
         [SerializeField] private Sprite _frameMainLose;
         [SerializeField] private Sprite _frameMainWin;
 
-        [SerializeField] private RatingGame _ratingGame;
         [SerializeField] private DailyBonus _dailyBonus;
         
         public RewardedFramesCounters RewardedFramesCounters;
@@ -174,7 +173,6 @@ namespace UserInterface
             TransitionAnimation();
             yield return new WaitForSeconds(0.5f);
             GameInstance.FXController.PlayMenuBackgroundParticle();
-            _ratingGame.DisplayResults();
             if (toMenu)
             {
                 GameInstance.MusicSystem.ChangeMusicClip();

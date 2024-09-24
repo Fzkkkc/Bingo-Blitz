@@ -104,6 +104,7 @@
             <e p="AudioSystem.cs" t="Include" />
             <e p="FXController.cs" t="Include" />
             <e p="GameInstance.cs" t="Include" />
+            <e p="MapRoadNavigation.cs" t="Include" />
             <e p="MoneyManager.cs" t="Include" />
             <e p="MusicSystem.cs" t="Include" />
             <e p="RewardedAdsButton.cs" t="Include" />

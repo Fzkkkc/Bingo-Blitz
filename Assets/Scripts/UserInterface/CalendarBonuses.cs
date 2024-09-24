@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Services;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ namespace UserInterface
         public Sprite diamondSprite;
         public Sprite wpSprite;
 
+        [SerializeField] private TextMeshProUGUI _counterText;
+        
         private int _currentDay = 0;
         private int _maxDays = 30;
         private DateTime _lastClaimDate;
@@ -30,6 +33,7 @@ namespace UserInterface
             CheckIfBonusCanBeClaimed();
             DeactivateImages();
             UpdateClaimedBonuses();
+            UpdateCounterText();
             _grabButton.onClick.AddListener(GrabBonus);
         }
 
@@ -50,6 +54,7 @@ namespace UserInterface
             _currentDay++;
             _lastClaimDate = DateTime.Today;
 
+            UpdateCounterText();
             SaveCurrentDayAndDate();
             SaveRewardsForDays();
 
@@ -91,6 +96,11 @@ namespace UserInterface
             bonusImage.gameObject.SetActive(true);
         }
 
+        private void UpdateCounterText()
+        {
+            _counterText.text = $"{_currentDay}/30";
+        }
+        
         private void UpdateClaimedBonuses()
         {
             for (int i = 0; i < _currentDay; i++)
