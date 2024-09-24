@@ -19,7 +19,7 @@ namespace Services
             
         public void Play(AudioCueScriptableObject audioCue, bool usePitch = true)
         {
-            var s = sources[current];
+            /*var s = sources[current];
             if (s.isPlaying)
                 s.Stop();
             audioCue.AppendTo(s, usePitch);
@@ -27,7 +27,7 @@ namespace Services
 
             current++;
             if (current >= maxAudioCount)
-                current = 0;
+                current = 0;*/
         }
     }
 }

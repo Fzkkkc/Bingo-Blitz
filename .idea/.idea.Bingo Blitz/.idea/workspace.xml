@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0ef6f77-084b-4340-af53-10dab3018586" name="Default Changelist" comment="" />
+    <list default="true" id="c0ef6f77-084b-4340-af53-10dab3018586" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -15,12 +29,19 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/PlayerPrefsEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextDiamonds.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UiTextPlayerLevel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UiSliderXP.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DailyBonuses.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="2mSovlNcjL94dQ0zEwzGu0hr2oO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -61,6 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1727079574132</updated>
       <workItem from="1727079576458" duration="7065000" />
+      <workItem from="1727161868993" duration="4424000" />
     </task>
     <servers />
   </component>
@@ -69,7 +91,24 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="93" y="93" width="1521" height="727" key="VCS.FileHistoryDialog" timestamp="1727165086782">
+      <screen x="0" y="0" width="1707" height="912" />
+    </state>
+    <state x="93" y="93" width="1521" height="727" key="VCS.FileHistoryDialog/0.0.1707.912@0.0.1707.912" timestamp="1727165086782" />
   </component>
 </project>

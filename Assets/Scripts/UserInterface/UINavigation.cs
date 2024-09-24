@@ -23,7 +23,6 @@ namespace UserInterface
         public Action OnGameStarted;
         public Action OnGameRestarted;
         public Action OnGameWindowClosed;
-        public Action OnTrashGameOpened;
 
         public bool _isInLoad = false;
         public bool _toMain = false;
@@ -38,6 +37,9 @@ namespace UserInterface
         [SerializeField] private Sprite _frameMainWin;
 
         [SerializeField] private RatingGame _ratingGame;
+        [SerializeField] private DailyBonus _dailyBonus;
+
+        private bool _firstOpened = true;
         
         public void Init()
         {
@@ -94,9 +96,14 @@ namespace UserInterface
             StartCoroutine(OpenMenuPopup(0));
         }
         
-        public void OpenShopMainUI()
+        public void OpenDailyBonusUI()
         {
-            StartCoroutine(OpenMenuPopup(1, false));
+            StartCoroutine(AnimateScale(MainMenuPopups[1], true));
+        }
+        
+        public void CloseDailyBonusUI()
+        {
+            StartCoroutine(AnimateScale(MainMenuPopups[1], false));
         }
         
         public void OpenPotionShopUI()
@@ -225,6 +232,46 @@ namespace UserInterface
             canvasGroup.alpha = finishValue;
         }
 
+        public IEnumerator AnimateScale(CanvasGroup canvasGroup, bool show, float duration = 0.7f)
+        {
+            canvasGroup.alpha = 1f;
+            canvasGroup.interactable = show;
+            canvasGroup.blocksRaycasts = show;
+
+            RectTransform rectTransform = canvasGroup.GetComponent<RectTransform>();
+            
+            Vector3 startScale = rectTransform.localScale;
+            Vector3 endScale = show ? new Vector3(1f, 1f, 1f) : Vector3.zero;
+            Vector3 midScale = new Vector3(1.2f, 1.2f, 1.2f);
+
+            float elapsedTime = 0f;
+
+            // Устанавливаем начальный scale: либо 0 при показе, либо 1 при скрытии
+            Vector3 initialScale = show ? Vector3.zero : new Vector3(1f, 1f, 1f);
+            rectTransform.localScale = initialScale;
+
+            // Анимация до 1.2
+            while (elapsedTime < duration / 2)
+            {
+                elapsedTime += Time.deltaTime;
+                rectTransform.localScale = Vector3.Lerp(initialScale, midScale, elapsedTime / (duration / 2));
+                yield return null;
+            }
+
+            elapsedTime = 0f;
+
+            // Анимация от 1.2 до конечного значения
+            while (elapsedTime < duration / 2)
+            {
+                elapsedTime += Time.deltaTime;
+                rectTransform.localScale = Vector3.Lerp(midScale, endScale, elapsedTime / (duration / 2));
+                yield return null;
+            }
+
+            rectTransform.localScale = endScale;  // Устанавливаем финальный scale
+        }
+
+
         public void TransitionAnimation()
         {
             _transitionAnimator.SetTrigger("Transition");
@@ -273,6 +320,11 @@ namespace UserInterface
             }
             
             OnActivePopupChanged?.Invoke();
+
+            if (!_firstOpened) return;
+            _firstOpened = false;
+                
+            _dailyBonus.Init();
         }
         
         private void SelectGamePopup(int selectedIndex)
