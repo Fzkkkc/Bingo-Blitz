@@ -7,10 +7,12 @@
   <component name="ChangeListManager">
     <list default="true" id="c0ef6f77-084b-4340-af53-10dab3018586" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597881081.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597881081.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/RewardedAdsButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/RewardedAdsButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,14 +31,19 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/PlayerPrefsEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextDiamonds.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UiTextPlayerLevel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UiSliderXP.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DailyBonuses.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/RewardedFramesCounters.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/RewardedAdsButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendaryBonuses.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendarBonuses.cs" />
       </list>
     </option>
   </component>
@@ -82,7 +89,8 @@
       <option name="presentableId" value="Default" />
       <updated>1727079574132</updated>
       <workItem from="1727079576458" duration="7065000" />
-      <workItem from="1727161868993" duration="4424000" />
+      <workItem from="1727161868993" duration="4950000" />
+      <workItem from="1727170125893" duration="4106000" />
     </task>
     <servers />
   </component>
@@ -101,6 +109,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

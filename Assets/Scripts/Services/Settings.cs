@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,11 +26,20 @@ namespace Services
         [SerializeField] private Sprite _volumeOffSprite;
         private Sprite _volumeOnSprite;
         
+        [SerializeField] private Image _settingsImage;
+        [SerializeField] private Sprite _settingsOpenSprite;
+        private Sprite _settingsCloseSprite;
+        
         [SerializeField] private float _animationDuration = 1f;  
 
         private bool _isOpen = false;
         private bool _isOff = false;
-        
+
+        private void OnValidate()
+        {
+            _settingsImage ??= GetComponent<Image>();
+        }
+
         private void Start()
         {
             _policyButton.onClick.AddListener(PolicyView);
@@ -39,7 +49,7 @@ namespace Services
             _mainButton.onClick.AddListener(MainButtonState);
 
             _volumeOnSprite = _soundButton.image.sprite;
-            
+            _settingsCloseSprite = _settingsImage.sprite;
             foreach (var button in _settingsButtons)
             {
                 button.image.raycastTarget = false;
@@ -108,6 +118,7 @@ namespace Services
                 button.image.raycastTarget = true;
             }
 
+            _settingsImage.sprite = _settingsOpenSprite;
             _mainButton.interactable = true;
         }
 
@@ -132,6 +143,7 @@ namespace Services
             {
                 button.image.raycastTarget = false;
             }
+            _settingsImage.sprite = _settingsCloseSprite;
             _mainButton.interactable = true;
         }
 

@@ -38,6 +38,8 @@ namespace UserInterface
 
         [SerializeField] private RatingGame _ratingGame;
         [SerializeField] private DailyBonus _dailyBonus;
+        
+        public RewardedFramesCounters RewardedFramesCounters;
 
         private bool _firstOpened = true;
         
@@ -104,6 +106,16 @@ namespace UserInterface
         public void CloseDailyBonusUI()
         {
             StartCoroutine(AnimateScale(MainMenuPopups[1], false));
+        }
+        
+        public void OpenCalendarBonusUI()
+        {
+            StartCoroutine(AnimateScale(MainMenuPopups[0], true));
+        }
+        
+        public void CloseCalendarBonusUI()
+        {
+            StartCoroutine(AnimateScale(MainMenuPopups[0], false));
         }
         
         public void OpenPotionShopUI()
