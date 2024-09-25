@@ -131,13 +131,7 @@ namespace Services
             _coinShowerFX.gameObject.SetActive(true);
             _coinShowerFX.Play();
         }
-
-        public void StateBoilingFX(bool isActive)
-        {
-            _boilingFX.gameObject.SetActive(isActive);
-            _boilingFX.Play();
-        }
-
+        
         public void ChangeBoilingFXColor(Color startColor)
         {
             var mainModule = _boilingFX.main;

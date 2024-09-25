@@ -48,7 +48,7 @@ namespace Services
         {
             _coins = PrefsMoney;
             _diamonds = PrefsDiamonds;
-            //AddCoinsCurrency(startMoney);
+            AddCoinsCurrency(2000);
             //PlayerPrefs.DeleteAll();
         }
         

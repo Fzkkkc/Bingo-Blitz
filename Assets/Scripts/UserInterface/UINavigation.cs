@@ -188,7 +188,7 @@ namespace UserInterface
             
             if (gameClose)
             {
-                GameInstance.FXController.StateBoilingFX(false);
+                //GameInstance.FXController.StateBoilingFX(false);
                 gameClose = false;
                 ResetGamePopups();
                 OnGameWindowClosed?.Invoke();
@@ -247,37 +247,31 @@ namespace UserInterface
             canvasGroup.interactable = show;
             canvasGroup.blocksRaycasts = show;
 
-            RectTransform rectTransform = canvasGroup.GetComponent<RectTransform>();
-            
-            Vector3 startScale = rectTransform.localScale;
-            Vector3 endScale = show ? new Vector3(1f, 1f, 1f) : Vector3.zero;
-            Vector3 midScale = new Vector3(1.2f, 1.2f, 1.2f);
+            var endScale = show ? new Vector3(1f, 1f, 1f) : Vector3.zero;
+            var midScale = new Vector3(1.2f, 1.2f, 1.2f);
 
-            float elapsedTime = 0f;
+            var elapsedTime = 0f;
 
-            // Устанавливаем начальный scale: либо 0 при показе, либо 1 при скрытии
-            Vector3 initialScale = show ? Vector3.zero : new Vector3(1f, 1f, 1f);
-            rectTransform.localScale = initialScale;
+            var initialScale = show ? Vector3.zero : new Vector3(1f, 1f, 1f);
+            canvasGroup.transform.localScale = initialScale;
 
-            // Анимация до 1.2
             while (elapsedTime < duration / 2)
             {
                 elapsedTime += Time.deltaTime;
-                rectTransform.localScale = Vector3.Lerp(initialScale, midScale, elapsedTime / (duration / 2));
+                canvasGroup.transform.localScale = Vector3.Lerp(initialScale, midScale, elapsedTime / (duration / 2));
                 yield return null;
             }
 
             elapsedTime = 0f;
 
-            // Анимация от 1.2 до конечного значения
             while (elapsedTime < duration / 2)
             {
                 elapsedTime += Time.deltaTime;
-                rectTransform.localScale = Vector3.Lerp(midScale, endScale, elapsedTime / (duration / 2));
+                canvasGroup.transform.localScale = Vector3.Lerp(midScale, endScale, elapsedTime / (duration / 2));
                 yield return null;
             }
 
-            rectTransform.localScale = endScale;  // Устанавливаем финальный scale
+            canvasGroup.transform.localScale = endScale; 
         }
 
 

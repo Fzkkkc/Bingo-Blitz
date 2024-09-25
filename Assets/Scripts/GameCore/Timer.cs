@@ -8,7 +8,9 @@ namespace GameCore
     public class Timer : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _timerText;
-
+        [SerializeField] private float _timerDuration = 30f;
+        
+        
         private float _timeRemaining;
         private bool isRunning;
 
@@ -17,19 +19,13 @@ namespace GameCore
         public void Init()
         {
             ResetTimer();
-            GameInstance.UINavigation.OnGameStarted += StartTimer;
         }
 
         public float GetRemainingTime()
         {
             return _timeRemaining;
         }
-
-        private void OnDestroy()
-        {
-            GameInstance.UINavigation.OnGameStarted -= StartTimer;
-        }
-
+        
         private void Update()
         {
             TimerRun();
@@ -48,7 +44,7 @@ namespace GameCore
             UpdateTimerText();
         }
 
-        private void StartTimer()
+        public void StartTimer()
         {
             ResetTimer();
             isRunning = true;
@@ -72,7 +68,7 @@ namespace GameCore
 
         public void ResetTimer()
         {
-            _timeRemaining = 30f;
+            _timeRemaining = _timerDuration;
             UpdateTimerText();
         }
 
@@ -80,7 +76,7 @@ namespace GameCore
         {
             var minutes = Mathf.FloorToInt(_timeRemaining / 60);
             var seconds = Mathf.FloorToInt(_timeRemaining % 60);
-            _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            _timerText.text = string.Format("{0:00} SEC", seconds);
         }
     }
 }
