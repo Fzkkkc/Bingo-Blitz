@@ -127,8 +127,9 @@ namespace UserInterface
             StartCoroutine(OpenMenuPopup(3, false));
         }
 
-        public void OpenGameMenu()
+        public void OpenGameMenu(int index)
         {
+            GameInstance.MapRoadNavigation.SetCurrentLevelIndex(index);
             StartCoroutine(OpenGamePopup());
         }
         
@@ -139,7 +140,6 @@ namespace UserInterface
         
         public void OpenGameOverPopup(bool isWin)
         {
-            GameInstance.Timer.StopTimer();
             ResetGamePopups();
             StartCoroutine(FadeCanvasGroup(GamePopups[0], true));
             if (isWin)
@@ -150,7 +150,6 @@ namespace UserInterface
                 _watchAdsButton.interactable = false;
                 _restartButton.gameObject.SetActive(true);
                 _frameMainImage.sprite = _frameMainWin;
-                GameInstance.Timer.TimerEndText.color = new Color(255f,255f,255f,255f);
             }
             else
             {
@@ -158,14 +157,12 @@ namespace UserInterface
                 _restartButton.gameObject.SetActive(false);
                 GameInstance.Audio.Play(GameInstance.Audio.LoseGameEndSound);
                 _frameMainImage.sprite = _frameMainLose;
-                GameInstance.Timer.TimerEndText.color = new Color(255f,255f,255f,0f);
             }
         }
         
         public void ContinueGame()
         {
             ResetGamePopups();
-            GameInstance.GameState.ContinueGame();
         }
         
         public IEnumerator OpenMenuPopup(int index, bool toMenu = true, bool needAward = false)
@@ -185,8 +182,8 @@ namespace UserInterface
             
             if (needAward)
             {
-                GameInstance.MoneyManager.AddCoinsCurrency(GameInstance.GameState.CurrentAwardCount);
-                GameInstance.GameState.CurrentAwardCount = 0;
+                GameInstance.MoneyManager.AddCoinsCurrency(/*GameInstance.GameState.CurrentAwardCount*/50);
+                //GameInstance.GameState.CurrentAwardCount = 0;
             }
             
             if (gameClose)
@@ -211,6 +208,8 @@ namespace UserInterface
             GameInstance.FXController.StopMenuBackgroundParticle();
             ResetGamePopups();
             OpenGroup(GameMenu);
+            
+            SelectGamePopup(0);
             
             if (isRestart)
             {

@@ -72,10 +72,10 @@ namespace Services
         
         public void StopFireworksParticle()
         {
-            foreach (var particle in _fireworksFX)
+            /*foreach (var particle in _fireworksFX)
             {
                 particle.gameObject.SetActive(false);
-            }
+            }*/
         }
         
         public void StopMenuHideBackgroundParticle()

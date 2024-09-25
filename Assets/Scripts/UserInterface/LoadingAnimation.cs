@@ -13,11 +13,20 @@ namespace UserInterface
         [SerializeField] private float _fadeDuration = 0.5f;  
         [SerializeField] private float _scaleDuration = 0.5f; 
         [SerializeField] private float _maxScale = 140f;      
-        [SerializeField] private float _minScale = 120f;  
-
+        [SerializeField] private float _minScale = 120f;
+        [SerializeField] private bool _isTest = false;
+        
         private void Start()
         {
-            StartCoroutine(AnimateImages());
+            if (_isTest)
+            {
+                GameInstance.UINavigation.OpenGameMenu(0);
+            }
+            else
+            {
+                StartCoroutine(AnimateImages());
+            }
+            
         }
 
         private IEnumerator AnimateImages()

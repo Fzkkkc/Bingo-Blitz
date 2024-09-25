@@ -19,9 +19,9 @@ namespace Services
     {
         [SerializeField] private List<Button> _levelButtons;
         [SerializeField] private List<TextMeshProUGUI> _textLevel; 
-        [SerializeField] private List<LevelData> _levelsData; 
+        public List<LevelData> _levelsData; 
 
-        private int _currentMainLevel;
+        public int _currentMainLevel;
         private readonly int _maxMainLevels = 5;
         private readonly int _maxSubLevels = 9;
 

@@ -10,19 +10,17 @@ namespace Services
         [SerializeField] private FXController _fxController;
         [SerializeField] private AudioSystem _audio;
         [SerializeField] private MusicSystem _music;
-        [SerializeField] private GameState _gameState;
         [SerializeField] private MoneyManager _moneyManager;
-        [SerializeField] private Timer _timer;
         [SerializeField] private MapRoadNavigation _mapRoadNavigation;
+        [SerializeField] private GameState _gameState;
         
         public static UINavigation UINavigation => Default._uiNavigation;
         public static FXController FXController => Default._fxController;
         public static AudioSystem Audio => Default._audio;
-        public static GameState GameState => Default._gameState;
         public static MusicSystem MusicSystem => Default._music;
         public static MoneyManager MoneyManager => Default._moneyManager;
-        public static Timer Timer => Default._timer;
         public static MapRoadNavigation MapRoadNavigation => Default._mapRoadNavigation;
+        public static GameState GameState => Default._gameState;
 
         protected override void Awake()
         { 
@@ -32,9 +30,8 @@ namespace Services
             _fxController.Init();
             _audio.Init();
             _music.Init();
-            _gameState.Init();
-            _timer.Init();
             _mapRoadNavigation.Init();
+            _gameState.Init();
             _moneyManager.Init(0);
         }
     }
