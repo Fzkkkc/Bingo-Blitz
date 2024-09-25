@@ -17,10 +17,13 @@ namespace GameCore
         [SerializeField] private CanvasGroup _framesGroup;
         [SerializeField] private Button _oneFieldButton;
         [SerializeField] private Button _twoFieldButton;
+        [SerializeField] private RectTransform _firstField;
+        [SerializeField] private RectTransform _secondField;
         
         [Header("Classes")]
         public Timer Timer;
         public ImagesAnimation ImagesAnimation;
+        public PlayerBingoController PlayerBingoController;
         
         [Header("Variables")] 
         [SerializeField] private int _selectedFieldType = 0;
@@ -65,6 +68,8 @@ namespace GameCore
             _oneFieldButton.interactable = true;
             _boughtOneCard = false;
             _boughtTwoCard = false;
+            _framesGroup.transform.localScale = new Vector3(1, 1, 1);
+            ImagesAnimation.ResetImagesScale();
         }
         
         private void UpdateStarButtons()
@@ -111,6 +116,8 @@ namespace GameCore
 
         private IEnumerator ShowFieldAnimation()
         {
+            SetFieldPositions();
+            PlayerBingoController.FillPlayerBoard(GetFieldCount());
             yield return new WaitForSeconds(3.5f);
             StartCoroutine(GameInstance.UINavigation.AnimateScale(_framesGroup, false));
             StartCoroutine(GameInstance.UINavigation.AnimateScale(GameInstance.UINavigation.GamePopups[2], true));
@@ -149,6 +156,27 @@ namespace GameCore
             _twoFieldButton.interactable = false;
             _oneFieldButton.interactable = true;
             _boughtTwoCard = true;
+        }
+        
+        private void SetFieldPositions()
+        {
+            switch (_selectedFieldType)
+            {
+                case 1:
+                    _secondField.gameObject.SetActive(false);
+                    _firstField.localPosition = new Vector3(-16.8850002f,-123.919998f,0f);
+                    break;
+                case 2:
+                    _secondField.gameObject.SetActive(true);
+                    _firstField.localPosition = new Vector3(-381.390015f, -123.919998f, 0f);
+                    _secondField.localPosition = new Vector3(347.609924f, -123.919998f, 0f);
+                    break;
+            }
+        }
+
+        public int GetFieldCount()
+        {
+            return _selectedFieldType;
         }
     }
 }

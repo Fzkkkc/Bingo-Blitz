@@ -13,6 +13,14 @@ namespace GameCore
         private const float scaleNormal = 1f;
         private const float animationDuration = 0.7f;
 
+        public void ResetImagesScale()
+        {
+            foreach (var image in _imageList)
+            {
+                image.transform.localScale = Vector3.zero;
+            }
+        }
+        
         public void StartAnimation()
         {
             StartCoroutine(AnimateImages());
