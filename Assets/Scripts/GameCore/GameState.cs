@@ -24,9 +24,11 @@ namespace GameCore
         public Timer Timer;
         public ImagesAnimation ImagesAnimation;
         public PlayerBingoController PlayerBingoController;
+        public BingoMainController BingoMainController;
         
         [Header("Variables")] 
         [SerializeField] private int _selectedFieldType = 0;
+        public bool GameRunning = false;
         
         private bool _boughtOneCard = false;
         private bool _boughtTwoCard = false;
@@ -62,6 +64,7 @@ namespace GameCore
 
         private void ResetGame()
         {
+            GameRunning = false;
             _selectedFieldType = 0;
             _wonComboAnimator.SetTrigger("StopCombo");
             _twoFieldButton.interactable = true;
@@ -122,6 +125,8 @@ namespace GameCore
             StartCoroutine(GameInstance.UINavigation.AnimateScale(_framesGroup, false));
             StartCoroutine(GameInstance.UINavigation.AnimateScale(GameInstance.UINavigation.GamePopups[2], true));
             ImagesAnimation.StartAnimation();
+            GameRunning = true;
+            BingoMainController.StartSpawnBalls();
         }
 
         private void SelectOneFieldType()

@@ -6,7 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0ef6f77-084b-4340-af53-10dab3018586" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,29 +17,36 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/GridLayoutGroup.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Packages/manifest.json" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DragBgMenu.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/PlayerPrefsEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextDiamonds.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UiTextPlayerLevel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UiSliderXP.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DailyBonuses.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/RewardedFramesCounters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/RewardedAdsButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendaryBonuses.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/GameInstance.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendarBonuses.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/GameInstance.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/MapRoadNavigation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/Timer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/ImagesAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" />
       </list>
     </option>
   </component>
@@ -86,6 +94,7 @@
       <workItem from="1727079576458" duration="7065000" />
       <workItem from="1727161868993" duration="4950000" />
       <workItem from="1727170125893" duration="12048000" />
+      <workItem from="1727250581914" duration="17307000" />
     </task>
     <servers />
   </component>
@@ -114,5 +123,9 @@
       <screen x="0" y="0" width="1707" height="912" />
     </state>
     <state x="93" y="93" width="1521" height="727" key="VCS.FileHistoryDialog/0.0.1707.912@0.0.1707.912" timestamp="1727165086782" />
+    <state x="516" y="193" width="672" height="678" key="search.everywhere.popup" timestamp="1727275637130">
+      <screen x="0" y="0" width="1707" height="912" />
+    </state>
+    <state x="516" y="193" width="672" height="678" key="search.everywhere.popup/0.0.1707.912@0.0.1707.912" timestamp="1727275637130" />
   </component>
 </project>
