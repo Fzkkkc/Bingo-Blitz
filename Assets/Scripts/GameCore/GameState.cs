@@ -26,6 +26,8 @@ namespace GameCore
         [SerializeField] private RectTransform _secondField;
         [SerializeField] private RectTransform _offer1;
         [SerializeField] private RectTransform _offer2;
+        [SerializeField] private RectTransform _bingoImage1;
+        [SerializeField] private RectTransform _bingoImage2;
         
         [Header("Classes")]
         public Timer Timer;
@@ -85,6 +87,8 @@ namespace GameCore
             ImagesAnimation.ResetImagesScale();
             _offer1.localScale = Vector3.zero;
             _offer2.localScale = Vector3.zero;
+            _bingoImage2.localScale = Vector3.zero;
+            _bingoImage1.localScale = Vector3.zero;
         }
         
         private void UpdateStarButtons()
@@ -120,6 +124,21 @@ namespace GameCore
             }
         }
 
+        public void PlayBingoAnimation(int index)
+        {
+            if (index == 1)
+            {
+                StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_bingoImage1, true,
+                    new Vector3(0f, _bingoImage1.transform.localScale.y, _bingoImage1.transform.localScale.z)));
+            }
+            else if (index == 2)
+            {
+                StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_bingoImage2, true,
+                    new Vector3(0f, _bingoImage2.transform.localScale.y, _bingoImage2.transform.localScale.z)));
+            }
+            
+        }
+        
         private void OpenGameOverPopup()
         {
             GameRunning = false;

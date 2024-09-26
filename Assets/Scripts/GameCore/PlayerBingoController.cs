@@ -230,30 +230,31 @@ namespace GameCore
                     {
                         _playerBingoCount++;
                         OnPlayerGotBingo?.Invoke();
+                        GameInstance.GameState.PlayBingoAnimation(1);
                     }
                     else if (_playerBingoCount == 1)
                     {
                         _playerBingoCount++;
                         OnPlayerGotSecondBingo?.Invoke();
+                        GameInstance.GameState.PlayBingoAnimation(2);
                     }
 
                     Debug.Log("ПОБЕДА");
                     Debug.Log("Выигрышная комбинация: " + string.Join(", ", winningCombination));
-                    // Обработка выигрышного сценария здесь
-                    break; // Выход после нахождения выигрышной комбинации
+                    break; 
                 }
             }
         }
 
         private IEnumerator AnimateButton(Image buttonImage)
         {
-            buttonImage.transform.localScale = Vector3.zero; // Сбрасываем масштаб перед началом анимации
+            buttonImage.transform.localScale = Vector3.zero; 
 
             var animationDuration = 0.22f;
             var scaleUp = 1.5f;
             var elapsedTime = 0f;
 
-            // Увеличение до 1.4
+           
             while (elapsedTime < animationDuration)
             {
                 var scale = Mathf.Lerp(0f, scaleUp, elapsedTime / animationDuration);
@@ -266,7 +267,7 @@ namespace GameCore
 
             elapsedTime = 0f;
 
-            // Уменьшение до 1
+            
             while (elapsedTime < animationDuration)
             {
                 var scale = Mathf.Lerp(scaleUp, 1f, elapsedTime / animationDuration);
@@ -275,7 +276,7 @@ namespace GameCore
                 yield return null;
             }
 
-            buttonImage.transform.localScale = Vector3.one; // Убедитесь, что scale вернулся к 1
+            buttonImage.transform.localScale = Vector3.one; 
         }
 
         public int GetBingoCount()
@@ -295,7 +296,7 @@ namespace GameCore
             var hasWinningCombinationField1 = CheckForWinningCombination(_usedButtonsField1);
             var hasWinningCombinationField2 = CheckForWinningCombination(_usedButtonsField2);
 
-            if (fieldCount == 1 /*&& !hasWinningCombinationField1*/)
+            if (fieldCount == 1)
             {
                 CloseRandomButtonsInField(_bingoColumns, _usedButtonsField1, _firstFieldButtonTexts, _firstFieldButtonImages);
                 if (!hasWinningCombinationField1)
@@ -323,7 +324,6 @@ namespace GameCore
         {
             var availableButtons = new List<Button>();
 
-            // Собираем список неиспользованных кнопок
             foreach (var column in bingoColumns)
             {
                 foreach (var button in column.buttons)
@@ -340,7 +340,6 @@ namespace GameCore
                 var randomIndex = Random.Range(0, availableButtons.Count);
                 var buttonToClose = availableButtons[randomIndex];
 
-                // Получаем индекс кнопки в соответствующем списке
                 var buttonIndex = GetButtonIndex(buttonToClose, bingoColumns);
 
                 if (buttonIndex >= 0 && buttonIndex < buttonTexts.Count && buttonIndex < buttonImages.Count)
@@ -348,13 +347,10 @@ namespace GameCore
                     var text = buttonTexts[buttonIndex];
                     var image = buttonImages[buttonIndex];
 
-                    // Обрабатываем кнопку, как если бы игрок кликнул на нее
                     ProcessButtonClick(text, image, buttonToClose, usedButtons);
 
-                    // Добавляем кнопку в список использованных кнопок
                     usedButtons.Add(buttonToClose);
 
-                    // Удаляем кнопку из доступных для случайного выбора
                     availableButtons.RemoveAt(randomIndex);
                 }
             }
@@ -372,7 +368,7 @@ namespace GameCore
                 }
                 index += column.buttons.Count;
             }
-            return -1; // если кнопка не найдена
+            return -1; 
         }
         
         private bool CheckForWinningCombination(List<Button> usedButtons)
@@ -392,10 +388,10 @@ namespace GameCore
                         break;
                     }
 
-                if (isWinningCombination) return true; // Если найдена выигрышная комбинация, возвращаем true
+                if (isWinningCombination) return true; 
             }
 
-            return false; // Нет выигрышной комбинации
+            return false;
         }
     }
 }
