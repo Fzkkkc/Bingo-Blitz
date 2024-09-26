@@ -239,5 +239,10 @@ namespace GameCore
                 ball.transform.localScale = Vector3.zero;
             }
         }
+        
+        public bool IsNumberUsed(int number)
+        {
+            return usedNumbers.Contains(number);
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,14 +17,16 @@ namespace GameCore
 
     public class PlayerBingoController : MonoBehaviour
     {
-        [Header("Bingo Columns")] [SerializeField]
+        [Header("Bingo Columns")] 
+        [SerializeField]
         private List<BingoColumn> _bingoColumns;
 
-        [Header("Second Bingo Field")] [SerializeField]
+        [Header("Second Bingo Field")] 
+        [SerializeField]
         private List<BingoColumn> _secondBingoColumns; // Второй список из 5 столбцов
 
         // Диапазоны для каждого столбца
-        private readonly int[] _columnRanges = {1, 16, 31, 46, 61};
+        private readonly int[] _columnRanges = { 1, 16, 31, 46, 61 };
 
         // Листы для хранения дочерних элементов кнопок для двух полей
         private List<TextMeshProUGUI> _firstFieldButtonTexts;
@@ -30,6 +34,9 @@ namespace GameCore
 
         private List<TextMeshProUGUI> _secondFieldButtonTexts;
         private List<Image> _secondFieldButtonImages;
+
+        // Список использованных кнопок
+        private List<Button> _usedButtons = new List<Button>();
 
         private void Start()
         {
@@ -40,41 +47,39 @@ namespace GameCore
             _secondFieldButtonImages = new List<Image>();
 
             InitializeField(_bingoColumns, _firstFieldButtonTexts, _firstFieldButtonImages);
-
             InitializeField(_secondBingoColumns, _secondFieldButtonTexts, _secondFieldButtonImages);
-
-            FillBingoBoard(_bingoColumns, _firstFieldButtonTexts, _firstFieldButtonImages);
-            FillBingoBoard(_secondBingoColumns, _secondFieldButtonTexts, _secondFieldButtonImages);
         }
 
         private void InitializeField(List<BingoColumn> bingoColumns, List<TextMeshProUGUI> buttonTexts,
             List<Image> buttonImages)
         {
             foreach (var column in bingoColumns)
-            foreach (var button in column.buttons)
             {
-                var text = button.GetComponentInChildren<TextMeshProUGUI>();
-                buttonTexts.Add(text);
-
-                var image = button.transform.GetComponentInChildren<Image>();
-
-                if (image != button.GetComponent<Image>())
+                foreach (var button in column.buttons)
                 {
-                    buttonImages.Add(image);
-                }
-                else
-                {
+                    var text = button.GetComponentInChildren<TextMeshProUGUI>();
+                    buttonTexts.Add(text);
+
+                    // Получаем дочерний Image для анимации
                     var childImage = button.GetComponentsInChildren<Image>();
+
+                    // Ищем Image, который не является самим Image кнопки
                     foreach (var img in childImage)
+                    {
                         if (img != button.GetComponent<Image>())
                         {
                             buttonImages.Add(img);
-                            break;
+                            break; // Добавляем только первый найденный дочерний Image
                         }
+                    }
+
+                    // Добавление обработчика нажатий на кнопку
+                    // Используем индекс кнопки, чтобы найти соответствующий дочерний Image из списка
+                    int index = buttonTexts.Count - 1; // Получаем индекс текста кнопки
+                    button.onClick.AddListener(() => OnButtonClick(text, buttonImages[index])); // Передаем дочерний Image по индексу
                 }
             }
         }
-
 
         public void FillPlayerBoard(int index)
         {
@@ -102,9 +107,13 @@ namespace GameCore
                     var number = uniqueNumbers[j];
 
                     buttonTexts[i * 5 + j].text = number.ToString();
-
-                    buttonImages[i * 5 + j].color = new Color(1, 1, 1, 0);
+                    buttonImages[i * 5 + j].color = new Color(1, 1, 1, 1);
                 }
+            }
+
+            foreach (var image in buttonImages)
+            {
+                image.transform.localScale = Vector3.zero; // Сбрасываем масштаб
             }
         }
 
@@ -120,6 +129,63 @@ namespace GameCore
             }
 
             return numbers;
+        }
+
+        private void OnButtonClick(TextMeshProUGUI buttonText, Image buttonImage)
+        {
+            // Получаем число с кнопки
+            if (int.TryParse(buttonText.text, out int number))
+            {
+                // Проверяем, есть ли это число в списке использованных чисел из BingoMainController
+                if (GameInstance.GameState.BingoMainController.IsNumberUsed(number))
+                {
+                    // Добавляем кнопку в список использованных кнопок
+                    if (!_usedButtons.Contains(buttonText.GetComponentInParent<Button>()))
+                    {
+                        _usedButtons.Add(buttonText.GetComponentInParent<Button>());
+                        Debug.Log($"Кнопка с номером {number} добавлена в использованные кнопки.");
+                        
+                        // Запускаем анимацию
+                        StartCoroutine(AnimateButton(buttonImage));
+
+                        // Очищаем текст кнопки
+                        buttonText.text = "";
+                    }
+                }
+            }
+        }
+
+        private IEnumerator AnimateButton(Image buttonImage)
+        {
+            buttonImage.transform.localScale = Vector3.zero; // Сбрасываем масштаб перед началом анимации
+
+            float animationDuration = 0.22f;
+            float scaleUp = 1.5f;
+            float elapsedTime = 0f;
+
+            // Увеличение до 1.4
+            while (elapsedTime < animationDuration)
+            {
+                float scale = Mathf.Lerp(0f, scaleUp, elapsedTime / animationDuration);
+                buttonImage.transform.localScale = new Vector3(scale, scale, scale);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            buttonImage.transform.localScale = new Vector3(scaleUp, scaleUp, scaleUp);
+
+            elapsedTime = 0f;
+
+            // Уменьшение до 1
+            while (elapsedTime < animationDuration)
+            {
+                float scale = Mathf.Lerp(scaleUp, 1f, elapsedTime / animationDuration);
+                buttonImage.transform.localScale = new Vector3(scale, scale, scale);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            buttonImage.transform.localScale = Vector3.one; // Убедитесь, что scale вернулся к 1
         }
     }
 }
