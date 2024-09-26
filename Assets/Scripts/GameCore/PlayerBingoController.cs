@@ -26,21 +26,17 @@ namespace GameCore
         [Header("UI")] [SerializeField]
         private Button _closeButtonsButton;
         
-        // Диапазоны для каждого столбца
         private readonly int[] _columnRanges = {1, 16, 31, 46, 61};
 
-        // Листы для хранения дочерних элементов кнопок для двух полей
         private List<TextMeshProUGUI> _firstFieldButtonTexts;
         private List<Image> _firstFieldButtonImages;
 
         private List<TextMeshProUGUI> _secondFieldButtonTexts;
         private List<Image> _secondFieldButtonImages;
 
-        // Списки использованных кнопок для каждого поля
         private readonly List<Button> _usedButtonsField1 = new List<Button>();
         private readonly List<Button> _usedButtonsField2 = new List<Button>();
 
-        // Выигрышные комбинации
         private List<List<string>> _winningCombinations;
 
         private int _playerBingoCount;
@@ -90,22 +86,19 @@ namespace GameCore
             {
                 var text = button.GetComponentInChildren<TextMeshProUGUI>();
                 buttonTexts.Add(text);
-
-                // Получаем дочерний Image для анимации
+                
                 var childImage = button.GetComponentsInChildren<Image>();
-
-                // Ищем Image, который не является самим Image кнопки
+                
                 foreach (var img in childImage)
                     if (img != button.GetComponent<Image>())
                     {
                         buttonImages.Add(img);
-                        break; // Добавляем только первый найденный дочерний Image
+                        break; 
                     }
 
-                // Добавление обработчика нажатий на кнопку
-                var index = buttonTexts.Count - 1; // Получаем индекс текста кнопки
+                var index = buttonTexts.Count - 1; 
                 button.onClick.AddListener(() =>
-                    OnButtonClick(text, buttonImages[index], button)); // Передаем дочерний Image по индексу
+                    OnButtonClick(text, buttonImages[index], button));
             }
         }
 
@@ -139,7 +132,7 @@ namespace GameCore
                 }
             }
 
-            foreach (var image in buttonImages) image.transform.localScale = Vector3.zero; // Сбрасываем масштаб
+            foreach (var image in buttonImages) image.transform.localScale = Vector3.zero; 
 
             _usedButtonsField1.Clear();
             _usedButtonsField2.Clear();
@@ -164,12 +157,9 @@ namespace GameCore
         private void OnButtonClick(TextMeshProUGUI buttonText, Image buttonImage, Button button)
         {
             if(!GameInstance.GameState.GameRunning) return;
-            // Получаем число с кнопки
             if (int.TryParse(buttonText.text, out var number))
-                // Проверяем, есть ли это число в списке использованных чисел из BingoMainController
                 if (GameInstance.GameState.BingoMainController.IsNumberUsed(number))
                 {
-                    // Определяем к какому полю принадлежит кнопка
                     if (IsButtonInField(button, _bingoColumns))
                     {
                         ProcessButtonClick(buttonText, buttonImage, button, _usedButtonsField1);
@@ -194,14 +184,11 @@ namespace GameCore
         private void ProcessButtonClick(TextMeshProUGUI buttonText, Image buttonImage, Button button,
             List<Button> usedButtons)
         {
-            // Добавляем кнопку в список использованных кнопок
             if (!usedButtons.Contains(button))
             {
                 usedButtons.Add(button);
-                // Запускаем анимацию
                 StartCoroutine(AnimateButton(buttonImage));
 
-                // Очищаем текст кнопки
                 buttonText.text = "";
             }
         }
@@ -211,7 +198,7 @@ namespace GameCore
             // Собираем имена активированных кнопок
             var activatedButtonNames = new HashSet<string>();
 
-            foreach (var usedButton in usedButtons) activatedButtonNames.Add(usedButton.name); // Используем имя кнопки
+            foreach (var usedButton in usedButtons) activatedButtonNames.Add(usedButton.name); 
 
             foreach (var winningCombination in _winningCombinations)
             {
