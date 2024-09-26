@@ -163,6 +163,7 @@ namespace GameCore
 
         private void OnButtonClick(TextMeshProUGUI buttonText, Image buttonImage, Button button)
         {
+            if(!GameInstance.GameState.GameRunning) return;
             // Получаем число с кнопки
             if (int.TryParse(buttonText.text, out var number))
                 // Проверяем, есть ли это число в списке использованных чисел из BingoMainController
@@ -294,20 +295,26 @@ namespace GameCore
             var hasWinningCombinationField1 = CheckForWinningCombination(_usedButtonsField1);
             var hasWinningCombinationField2 = CheckForWinningCombination(_usedButtonsField2);
 
-            if (fieldCount == 1 && !hasWinningCombinationField1)
+            if (fieldCount == 1 /*&& !hasWinningCombinationField1*/)
             {
                 CloseRandomButtonsInField(_bingoColumns, _usedButtonsField1, _firstFieldButtonTexts, _firstFieldButtonImages);
+                if (!hasWinningCombinationField1)
+                {
+                    CheckWinningCombinations(_usedButtonsField1);
+                }
             }
             else if (fieldCount == 2)
             {
+                CloseRandomButtonsInField(_bingoColumns, _usedButtonsField1, _firstFieldButtonTexts, _firstFieldButtonImages);
+                CloseRandomButtonsInField(_secondBingoColumns, _usedButtonsField2, _secondFieldButtonTexts, _secondFieldButtonImages);
+
                 if (!hasWinningCombinationField1)
                 {
-                    CloseRandomButtonsInField(_bingoColumns, _usedButtonsField1, _firstFieldButtonTexts, _firstFieldButtonImages);
+                    CheckWinningCombinations(_usedButtonsField1);
                 }
-
                 if (!hasWinningCombinationField2)
                 {
-                    CloseRandomButtonsInField(_secondBingoColumns, _usedButtonsField2, _secondFieldButtonTexts, _secondFieldButtonImages);
+                    CheckWinningCombinations(_usedButtonsField2);
                 }
             }
         }
@@ -341,12 +348,18 @@ namespace GameCore
                     var text = buttonTexts[buttonIndex];
                     var image = buttonImages[buttonIndex];
 
+                    // Обрабатываем кнопку, как если бы игрок кликнул на нее
                     ProcessButtonClick(text, image, buttonToClose, usedButtons);
 
+                    // Добавляем кнопку в список использованных кнопок
+                    usedButtons.Add(buttonToClose);
+
+                    // Удаляем кнопку из доступных для случайного выбора
                     availableButtons.RemoveAt(randomIndex);
                 }
             }
         }
+
 
         private int GetButtonIndex(Button button, List<BingoColumn> bingoColumns)
         {

@@ -170,8 +170,6 @@ namespace GameCore
                 StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_offer1, false,
                     new Vector3(647f, _offer1.transform.localScale.y, _offer1.transform.localScale.z)));
             }
-
-            
         }
         
         private IEnumerator OpenGameFieldAnimation()

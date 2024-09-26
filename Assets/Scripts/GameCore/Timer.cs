@@ -130,7 +130,7 @@ namespace GameCore
 
         private void DecreaseGameTimer()
         {
-            if (_timeGameRemaining > 5)
+            if (_timeGameRemaining > 5 && GameInstance.GameState.GameRunning)
             {
                 _gotBingo = true;
                 _timeGameRemaining = 5;
