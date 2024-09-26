@@ -15,19 +15,19 @@ namespace GameCore
         [SerializeField] private RectTransform _normalPoint;
 
         [Header("Bingo Ball Settings")]
-        [SerializeField] private List<Image> _bingoBalls; // 9 balls
-        [SerializeField] private List<Sprite> _bingoSprites; // 5 bingo sprites
-        private List<TextMeshProUGUI> _bingoBallTexts; // List for TextMeshProUGUI components
+        [SerializeField] private List<Image> _bingoBalls; 
+        [SerializeField] private List<Sprite> _bingoSprites; 
+        private List<TextMeshProUGUI> _bingoBallTexts; 
 
         [Header("Used Numbers Animation")]
-        [SerializeField] private List<Image> _usedNumbers; // Список для картинок с анимацией
+        [SerializeField] private List<Image> _usedNumbers;
 
-        public int currentBallIndex = 0; // Current index of the ball to spawn
-        public int movesCount = 0; // Counts the number of moves made
-        private const int MaxMoves = 11; // Total moves before resetting
-        public float ballOffset = 145f; // Offset for moving balls after NormalPoint
+        public int currentBallIndex = 0; 
+        public int movesCount = 0; 
+        private const int MaxMoves = 11; 
+        public float ballOffset = 145f; 
 
-        private List<int> usedNumbers = new List<int>(); // Список использованных номеров
+        private List<int> usedNumbers = new List<int>();
 
         private void Start()
         {
@@ -53,7 +53,7 @@ namespace GameCore
             ResetBalls();
             while (GameInstance.GameState.GameRunning)
             {
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(4f);
 
                 if (movesCount < MaxMoves)
                 {
@@ -61,44 +61,33 @@ namespace GameCore
                     {
                         SpawnBall();
                     }
-                    else
-                    {
-                        Debug.Log("Все номера использованы. Остановка корутины.");
-                        yield break; // Останавливаем корутину, когда все номера использованы
-                    }
                 }
             }
         }
 
         private void SpawnBall()
         {
-            // Получаем текущий шар
+            GameInstance.GameState.ImagesAnimation.SwapAndAnimateImages();
             Image currentBall = _bingoBalls[currentBallIndex];
             TextMeshProUGUI currentText = _bingoBallTexts[currentBallIndex];
 
-            // Генерируем уникальное случайное число и назначаем спрайт
             int randomNumber = GetUniqueRandomNumber();
             AssignSpriteToBall(currentBall, currentText, randomNumber);
 
-            // Если шарик на стартовой позиции, перемещаем его в большую точку
             if (currentBall.transform.localPosition == _spawnPoint.localPosition)
             {
                 StartCoroutine(MoveBall(currentBall, _bigPoint.localPosition, 1.2f));
             }
 
-            // Начинаем движение всех предыдущих шариков
             MovePreviousBalls();
 
-            // Увеличиваем счетчик перемещений
             movesCount++;
 
-            // Если достигли MaxMoves, сбрасываем все шары
             if (movesCount >= MaxMoves)
             {
                 movesCount = 0;
             }
 
-            // Обновляем индекс для следующего шарика
             currentBallIndex = (currentBallIndex + 1) % _bingoBalls.Count;
         }
 
@@ -108,18 +97,13 @@ namespace GameCore
             {
                 Image ball = _bingoBalls[i];
 
-                // Если шарик не находится на стартовой позиции и у него есть значение, то продолжаем его движение
                 if (ball.transform.localPosition != _spawnPoint.localPosition && !string.IsNullOrEmpty(_bingoBallTexts[i].text))
                 {
                     Vector3 targetPosition = ball.transform.localPosition + new Vector3(ballOffset, 0f, 0f);
 
-                    // Проверяем, достиг ли шарик позиции 728f
                     if (ball.transform.localPosition.x >= 728f)
                     {
-                        // Если шарик достиг 728f, сбрасываем его позицию и назначаем новое значение
                         ball.transform.localPosition = _spawnPoint.localPosition;
-                        //int randomNumber = GetUniqueRandomNumber();
-                        //AssignSpriteToBall(ball, _bingoBallTexts[i], randomNumber);
                         StartCoroutine(MoveBall(ball, _bigPoint.localPosition, 1.2f));
                     }
                     else
@@ -135,7 +119,7 @@ namespace GameCore
             Vector3 startPosition = ball.transform.localPosition;
             Vector3 startScale = ball.transform.localScale;
 
-            float duration = 1f; // Продолжительность движения
+            float duration = 0.55f; 
             float time = 0;
 
             while (time < duration)
@@ -147,7 +131,6 @@ namespace GameCore
                 yield return null;
             }
 
-            // Обеспечиваем установку конечной позиции и масштаба
             ball.transform.localPosition = targetPosition;
             ball.transform.localScale = Vector3.one * targetScale;
         }
@@ -159,50 +142,46 @@ namespace GameCore
 
             if (number <= 15)
             {
-                spriteIndex = 0; // First sprite
-                textColor = new Color(1f, 0.647f, 0f); // Orange
+                spriteIndex = 0; 
+                textColor = new Color(1f, 0.647f, 0f); 
             }
             else if (number <= 30)
             {
-                spriteIndex = 1; // Second sprite
-                textColor = Color.yellow; // Yellow
+                spriteIndex = 1; 
+                textColor = Color.yellow; 
             }
             else if (number <= 45)
             {
-                spriteIndex = 2; // Third sprite
-                textColor = new Color(0.5f, 0f, 0.5f); // Purple
+                spriteIndex = 2; 
+                textColor = new Color(0.5f, 0f, 0.5f);
             }
             else if (number <= 60)
             {
-                spriteIndex = 3; // Fourth sprite
-                textColor = new Color(0f, 0.5f, 0f); // Dark Green
+                spriteIndex = 3; 
+                textColor = new Color(0f, 0.5f, 0f); 
             }
             else
             {
-                spriteIndex = 4; // Fifth sprite
-                textColor = new Color(0f, 0.75f, 1f); // Light Blue
+                spriteIndex = 4; 
+                textColor = new Color(0f, 0.75f, 1f); 
             }
 
             ball.sprite = _bingoSprites[spriteIndex];
-            text.text = number.ToString(); // Обновляем текст с новым числом
-            text.color = textColor; // Обновляем цвет текста
-            ball.gameObject.SetActive(true); // Активируем шар
+            text.text = number.ToString(); 
+            text.color = textColor; 
 
-            // Запускаем анимацию появления
             StartCoroutine(AnimateUsedNumberAppearance(ball));
             StartCoroutine(AnimateUsedNumberAppearance(_usedNumbers[number - 1]));
         }
 
         private IEnumerator AnimateUsedNumberAppearance(Image ball)
         {
-            float duration = 0.7f;
+            float duration = 0.3f;
             float time = 0f;
 
-            // Начинаем с масштаба 0
             Vector3 startScale = Vector3.zero;
-            Vector3 endScale = Vector3.one * 1.2f; // Сначала увеличиваем до 1.2
+            Vector3 endScale = Vector3.one * 1.2f;
 
-            // Анимация увеличения масштаба до 1.2
             while (time < duration / 2)
             {
                 float t = time / (duration / 2);
@@ -211,7 +190,6 @@ namespace GameCore
                 yield return null;
             }
 
-            // Анимация уменьшения масштаба до 1.0
             time = 0f;
             startScale = Vector3.one * 1.2f;
             endScale = Vector3.one;
@@ -224,21 +202,19 @@ namespace GameCore
                 yield return null;
             }
 
-            ball.transform.localScale = Vector3.one; // Устанавливаем конечный масштаб 1.0
+            ball.transform.localScale = Vector3.one;
         }
 
         private int GetUniqueRandomNumber()
         {
             int randomNumber;
 
-            // Генерируем уникальное случайное число
             do
             {
                 randomNumber = Random.Range(1, 76);
             }
             while (usedNumbers.Contains(randomNumber));
 
-            // Добавляем число в список использованных
             usedNumbers.Add(randomNumber);
 
             return randomNumber;
@@ -251,14 +227,13 @@ namespace GameCore
                 Image ball = _bingoBalls[i];
                 TextMeshProUGUI text = _bingoBallTexts[i];
 
-                ball.transform.localPosition = _spawnPoint.localPosition; // Сброс позиции
-                ball.transform.localScale = Vector3.one; // Сброс масштаба
-                text.text = ""; // Очищаем текст
+                ball.transform.localPosition = _spawnPoint.localPosition; 
+                ball.transform.localScale = Vector3.one; 
+                text.text = ""; 
             }
-            currentBallIndex = 0; // Сбрасываем индекс текущего шара
-            usedNumbers.Clear(); // Очищаем список использованных номеров
+            currentBallIndex = 0; 
+            usedNumbers.Clear();
 
-            // Сбрасываем масштаб для всех изображений в _usedNumbers
             foreach (var ball in _usedNumbers)
             {
                 ball.transform.localScale = Vector3.zero;
