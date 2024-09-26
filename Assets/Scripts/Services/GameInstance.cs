@@ -22,6 +22,8 @@ namespace Services
         public static MapRoadNavigation MapRoadNavigation => Default._mapRoadNavigation;
         public static GameState GameState => Default._gameState;
 
+        public int _frameRate = 60;
+        
         protected override void Awake()
         { 
             //PlayerPrefs.DeleteAll();
@@ -33,6 +35,10 @@ namespace Services
             _mapRoadNavigation.Init();
             _gameState.Init();
             _moneyManager.Init(0);
+            QualitySettings.vSyncCount = 0;
+            QualitySettings.SetQualityLevel(1);
+            if (_frameRate != Application.targetFrameRate)
+                Application.targetFrameRate = _frameRate;
         }
     }
 }
