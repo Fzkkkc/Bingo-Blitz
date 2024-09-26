@@ -46,6 +46,11 @@ namespace GameCore
         public void StartSpawnBalls()
         {
             StartCoroutine(SpawnBalls());
+
+            for (int i = 0; i < 30; i++)
+            {
+                usedNumbers.Add(i);
+            }
         }
 
         private IEnumerator SpawnBalls()
@@ -53,7 +58,7 @@ namespace GameCore
             ResetBalls();
             while (GameInstance.GameState.GameRunning)
             {
-                yield return new WaitForSeconds(4f);
+                yield return new WaitForSeconds(2f);
 
                 if (movesCount < MaxMoves)
                 {

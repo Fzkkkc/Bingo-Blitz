@@ -9,21 +9,19 @@ namespace GameCore
     {
         [SerializeField] private TextMeshProUGUI _timerText;
         [SerializeField] private float _timerDuration = 30f;
-        
+        [SerializeField] private float _timerGameDuration = 140f;
         
         private float _timeRemaining;
+        private float _timeGameRemaining;
         private bool isRunning;
+        private bool isRunningGame;
 
         public Action OnTimerStopped;
-        
+        public Action OnGameTimerStopped;
         public void Init()
         {
             ResetTimer();
-        }
-
-        public float GetRemainingTime()
-        {
-            return _timeRemaining;
+            ResetGameTimer();
         }
         
         private void Update()
@@ -33,15 +31,29 @@ namespace GameCore
 
         private void TimerRun()
         {
-            if (!isRunning) return;
-            _timeRemaining -= Time.deltaTime;
-            if (_timeRemaining <= 0)
+            if (isRunning)
             {
-                _timeRemaining = 0;
-                TimerEnd();
+                _timeRemaining -= Time.deltaTime;
+                if (_timeRemaining <= 0)
+                {
+                    _timeRemaining = 0;
+                    TimerEnd();
+                }
+
+                UpdateTimerText();
             }
 
-            UpdateTimerText();
+            if (isRunningGame)
+            {
+                _timeGameRemaining -= Time.deltaTime;
+                if (_timeGameRemaining <= 0)
+                {
+                    _timeGameRemaining = 0;
+                    TimerGameEnd();
+                }
+
+                UpdateTimerText();
+            }
         }
 
         public void StartTimer()
@@ -50,10 +62,22 @@ namespace GameCore
             isRunning = true;
         }
 
+        public void StartGameTimer()
+        {
+            ResetGameTimer();
+            isRunningGame = true;
+        }
+        
         private void TimerEnd()
         {
             OnTimerStopped?.Invoke();
             isRunning = false;
+        }
+        
+        private void TimerGameEnd()
+        {
+            OnGameTimerStopped?.Invoke();
+            isRunningGame = false;
         }
 
         public void StopTimer()
@@ -72,6 +96,12 @@ namespace GameCore
             UpdateTimerText();
         }
 
+        public void ResetGameTimer()
+        {
+            _timeGameRemaining = _timerGameDuration;
+            UpdateTimerText();
+        }
+        
         private void UpdateTimerText()
         {
             var minutes = Mathf.FloorToInt(_timeRemaining / 60);

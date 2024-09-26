@@ -5,12 +5,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0ef6f77-084b-4340-af53-10dab3018586" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="c0ef6f77-084b-4340-af53-10dab3018586" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,7 +92,7 @@
       <workItem from="1727161868993" duration="4950000" />
       <workItem from="1727170125893" duration="12048000" />
       <workItem from="1727250581914" duration="17307000" />
-      <workItem from="1727335186365" duration="9657000" />
+      <workItem from="1727335186365" duration="9961000" />
     </task>
     <servers />
   </component>

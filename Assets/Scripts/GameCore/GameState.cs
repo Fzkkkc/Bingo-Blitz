@@ -46,6 +46,7 @@ namespace GameCore
             _twoFieldButton.onClick.AddListener(SelectTwoFieldType);
             Timer.Init();
             Timer.OnTimerStopped += OpenGameField;
+            Timer.OnGameTimerStopped += OpenGameField;
         }
 
         private void OnDestroy()
@@ -55,6 +56,7 @@ namespace GameCore
             GameInstance.UINavigation.OnGameStarted -= OpenPickCard;
             GameInstance.UINavigation.OnGameStarted -= UpdateStarButtons;
             Timer.OnTimerStopped -= OpenGameField;
+            Timer.OnGameTimerStopped -= OpenGameField;
         }
 
         private void StartComboAnim()
@@ -127,6 +129,7 @@ namespace GameCore
             ImagesAnimation.StartAnimation();
             GameRunning = true;
             BingoMainController.StartSpawnBalls();
+            Timer.StartGameTimer();
         }
 
         private void SelectOneFieldType()

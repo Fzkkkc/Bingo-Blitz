@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Services;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
+using Random = UnityEngine.Random;
 
 namespace GameCore
 {
@@ -14,9 +17,20 @@ namespace GameCore
         private const float animationDuration = 0.7f;
 
         private bool _isInitialized = false;
+
+        private void Start()
+        {
+            GameInstance.UINavigation.OnGameWindowClosed += ResetImagesScale;
+        }
+
+        private void OnDestroy()
+        {
+            GameInstance.UINavigation.OnGameWindowClosed -= ResetImagesScale;
+        }
         
         public void ResetImagesScale()
         {
+            StopAllCoroutines();
             foreach (var image in _imageList)
             {
                 image.transform.localScale = Vector3.zero;
