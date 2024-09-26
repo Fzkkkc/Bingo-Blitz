@@ -10,20 +10,32 @@ namespace GameCore
         [SerializeField] private TextMeshProUGUI _timerText;
         [SerializeField] private float _timerDuration = 30f;
         [SerializeField] private float _timerGameDuration = 140f;
-        
+        [SerializeField] private TextMeshProUGUI _bingoCountText;
+
         private float _timeRemaining;
         private float _timeGameRemaining;
         private bool isRunning;
+        private bool _gotBingo;
         private bool isRunningGame;
 
         public Action OnTimerStopped;
         public Action OnGameTimerStopped;
+
         public void Init()
         {
             ResetTimer();
             ResetGameTimer();
+            GameInstance.GameState.PlayerBingoController.OnPlayerGotBingo += DecreaseGameTimer;
+            GameInstance.UINavigation.OnGameStarted += ResetBingoCount;
+            UpdateBingoCountText();  
         }
-        
+
+        private void OnDestroy()
+        {
+            GameInstance.GameState.PlayerBingoController.OnPlayerGotBingo -= DecreaseGameTimer;
+            GameInstance.UINavigation.OnGameStarted -= ResetBingoCount;
+        }
+
         private void Update()
         {
             TimerRun();
@@ -52,7 +64,8 @@ namespace GameCore
                     TimerGameEnd();
                 }
 
-                UpdateTimerText();
+                if(!_gotBingo)
+                    UpdateGameTimerText();
             }
         }
 
@@ -67,17 +80,18 @@ namespace GameCore
             ResetGameTimer();
             isRunningGame = true;
         }
-        
+
         private void TimerEnd()
         {
             OnTimerStopped?.Invoke();
             isRunning = false;
         }
-        
+
         private void TimerGameEnd()
         {
             OnGameTimerStopped?.Invoke();
             isRunningGame = false;
+            UpdateBingoCountText(0);  // Когда время игры закончилось, бинго всегда 0
         }
 
         public void StopTimer()
@@ -99,14 +113,52 @@ namespace GameCore
         public void ResetGameTimer()
         {
             _timeGameRemaining = _timerGameDuration;
-            UpdateTimerText();
+            UpdateGameTimerText();
         }
-        
+
         private void UpdateTimerText()
         {
             var minutes = Mathf.FloorToInt(_timeRemaining / 60);
             var seconds = Mathf.FloorToInt(_timeRemaining % 60);
             _timerText.text = string.Format("{0:00} SEC", seconds);
+        }
+
+        private void UpdateGameTimerText()
+        {
+            UpdateBingoCountText();  // Обновляем количество бинго при каждом обновлении времени
+        }
+
+        private void DecreaseGameTimer()
+        {
+            if (_timeGameRemaining > 5)
+            {
+                _gotBingo = true;
+                _timeGameRemaining = 5;
+                UpdateBingoCountText(1);  
+            }
+        }
+
+        private void UpdateBingoCountText(int? bingoCountOverride = null)
+        {
+            int bingoCount;
+
+            if (bingoCountOverride.HasValue)
+            {
+                bingoCount = bingoCountOverride.Value;
+            }
+            else
+            {
+                bingoCount = Mathf.Max(0, Mathf.FloorToInt(_timeGameRemaining / 10));
+            }
+
+            _bingoCountText.text = bingoCount.ToString();
+        }
+
+        private void ResetBingoCount()
+        {
+            _gotBingo = false;
+            _timeGameRemaining = _timerGameDuration;
+            UpdateBingoCountText();
         }
     }
 }

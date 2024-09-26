@@ -42,6 +42,11 @@ namespace GameCore
         // Выигрышные комбинации
         private List<List<string>> _winningCombinations;
 
+        private int _playerBingoCount = 0;
+        
+        public Action OnPlayerGotBingo;
+        public Action OnPlayerGotSecondBingo;
+        
         private void Start()
         {
             _firstFieldButtonTexts = new List<TextMeshProUGUI>();
@@ -142,6 +147,7 @@ namespace GameCore
             
             _usedButtonsField1.Clear();
             _usedButtonsField2.Clear();
+            _playerBingoCount = 0;
         }
 
         private List<int> GenerateUniqueNumbersForColumn(int min, int max)
@@ -232,6 +238,16 @@ namespace GameCore
 
                 if (isWinningCombination)
                 {
+                    if (_playerBingoCount == 0)
+                    {
+                        _playerBingoCount++;
+                        OnPlayerGotBingo?.Invoke();
+                    }
+                    else if (_playerBingoCount == 1)
+                    {
+                        _playerBingoCount++;
+                        OnPlayerGotSecondBingo?.Invoke();
+                    }
                     Debug.Log("ПОБЕДА");
                     Debug.Log("Выигрышная комбинация: " + string.Join(", ", winningCombination));
                     // Обработка выигрышного сценария здесь
@@ -271,6 +287,11 @@ namespace GameCore
             }
 
             buttonImage.transform.localScale = Vector3.one; // Убедитесь, что scale вернулся к 1
+        }
+
+        public int GetBingoCount()
+        {
+            return _playerBingoCount;
         }
     }
 }

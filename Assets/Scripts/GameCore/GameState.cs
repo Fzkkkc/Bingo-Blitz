@@ -15,10 +15,16 @@ namespace GameCore
         [Header("UI")]
         [SerializeField] private List<Button> _starButtons;
         [SerializeField] private CanvasGroup _framesGroup;
+        [SerializeField] private CanvasGroup _topImageCanvasGroup;
+        [SerializeField] private CanvasGroup _winPosesFrameCanvasGroup;
+        [SerializeField] private CanvasGroup _playerImagesCanvasGroup;
+        [SerializeField] private CanvasGroup _numbersUsedCanvasGroup;
         [SerializeField] private Button _oneFieldButton;
         [SerializeField] private Button _twoFieldButton;
         [SerializeField] private RectTransform _firstField;
         [SerializeField] private RectTransform _secondField;
+        [SerializeField] private RectTransform _offer1;
+        [SerializeField] private RectTransform _offer2;
         
         [Header("Classes")]
         public Timer Timer;
@@ -46,7 +52,7 @@ namespace GameCore
             _twoFieldButton.onClick.AddListener(SelectTwoFieldType);
             Timer.Init();
             Timer.OnTimerStopped += OpenGameField;
-            Timer.OnGameTimerStopped += OpenGameField;
+            Timer.OnGameTimerStopped += OpenGameOverPopup;
         }
 
         private void OnDestroy()
@@ -56,7 +62,7 @@ namespace GameCore
             GameInstance.UINavigation.OnGameStarted -= OpenPickCard;
             GameInstance.UINavigation.OnGameStarted -= UpdateStarButtons;
             Timer.OnTimerStopped -= OpenGameField;
-            Timer.OnGameTimerStopped -= OpenGameField;
+            Timer.OnGameTimerStopped -= OpenGameOverPopup;
         }
 
         private void StartComboAnim()
@@ -92,6 +98,7 @@ namespace GameCore
 
         private IEnumerator OpenCardPopup()
         {
+            StartCoroutine(GameInstance.UINavigation.AnimateScale(_winPosesFrameCanvasGroup, true));
             yield return new WaitForSeconds(0.5f);
             StartCoroutine(GameInstance.UINavigation.AnimateScale(GameInstance.UINavigation.GamePopups[4], true));
             Timer.StartTimer();
@@ -109,6 +116,42 @@ namespace GameCore
             }
         }
 
+        private void OpenGameOverPopup()
+        {
+            GameRunning = false;
+            
+            StartCoroutine(GameInstance.UINavigation.AnimateScale(_topImageCanvasGroup, false));
+            StartCoroutine(GameInstance.UINavigation.AnimateScale(_winPosesFrameCanvasGroup, false));
+            StartCoroutine(GameInstance.UINavigation.AnimateScale(_numbersUsedCanvasGroup, false));
+            StartCoroutine(GameInstance.UINavigation.AnimateScale(_playerImagesCanvasGroup, false));
+            
+            GameInstance.UINavigation.OpenGroup(GameInstance.UINavigation.GamePopups[3]);
+            
+            if (_selectedFieldType == 1)
+            {
+                StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_firstField, true,
+                    new Vector3(/*-636f*/-379, _firstField.transform.localScale.y, _firstField.transform.localScale.z)));
+
+                _offer1.gameObject.SetActive(true);
+                
+                StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_offer1, true,
+                    new Vector3(351f, _offer1.transform.localScale.y, _offer1.transform.localScale.z)));
+            }
+            else if (_selectedFieldType == 2)
+            {
+                StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_firstField, true,
+                    new Vector3(-636f, _firstField.transform.localScale.y, _firstField.transform.localScale.z)));
+
+                StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_secondField, true,
+                    new Vector3(5f, _secondField.transform.localScale.y, _secondField.transform.localScale.z)));
+                
+                _offer1.gameObject.SetActive(true);
+                
+                StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_offer1, true,
+                    new Vector3(647f, _offer1.transform.localScale.y, _offer1.transform.localScale.z)));
+            }
+        }
+        
         private IEnumerator OpenGameFieldAnimation()
         {
             StartCoroutine(GameInstance.UINavigation.AnimateScale(GameInstance.UINavigation.GamePopups[4], false));
@@ -124,8 +167,11 @@ namespace GameCore
             SetFieldPositions();
             PlayerBingoController.FillPlayerBoard(GetFieldCount());
             yield return new WaitForSeconds(3.5f);
+            StartCoroutine(GameInstance.UINavigation.AnimateScale(_topImageCanvasGroup, true));
             StartCoroutine(GameInstance.UINavigation.AnimateScale(_framesGroup, false));
             StartCoroutine(GameInstance.UINavigation.AnimateScale(GameInstance.UINavigation.GamePopups[2], true));
+            StartCoroutine(GameInstance.UINavigation.AnimateScale(_numbersUsedCanvasGroup, true));
+            StartCoroutine(GameInstance.UINavigation.AnimateScale(_playerImagesCanvasGroup, true));
             ImagesAnimation.StartAnimation();
             GameRunning = true;
             BingoMainController.StartSpawnBalls();

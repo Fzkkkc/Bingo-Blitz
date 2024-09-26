@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using GameCore;
 using Services;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +12,7 @@ namespace UserInterface
         public List<CanvasGroup> GamePopups;
         public List<CanvasGroup> MainMenuPopups;
         [SerializeField] private Animator _transitionAnimator;
-        
+
         public CanvasGroup LoadingMenu;
         public CanvasGroup MainMenu;
         public CanvasGroup GameMenu;
@@ -24,11 +22,11 @@ namespace UserInterface
         public Action OnGameRestarted;
         public Action OnGameWindowClosed;
 
-        public bool _isInLoad = false;
-        public bool _toMain = false;
-        private bool gameClose = false;
-        
-        private bool _lastWin = false;
+        public bool _isInLoad;
+        public bool _toMain;
+        private bool gameClose;
+
+        private bool _lastWin;
 
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _watchAdsButton;
@@ -37,16 +35,16 @@ namespace UserInterface
         [SerializeField] private Sprite _frameMainWin;
 
         [SerializeField] private DailyBonus _dailyBonus;
-        
+
         public RewardedFramesCounters RewardedFramesCounters;
 
         private bool _firstOpened = true;
-        
+
         public void Init()
         {
             ResetPopups();
         }
-        
+
         private void ResetGamePopups()
         {
             foreach (var popup in GamePopups)
@@ -66,18 +64,18 @@ namespace UserInterface
                 popup.interactable = false;
             }
         }
-        
+
         private void ResetPopups()
         {
             OpenGroup(LoadingMenu);
-            
+
             CloseGroup(GameMenu);
             CloseGroup(MainMenu);
-            
+
             ResetGamePopups();
             ResetMenuPopups();
         }
-        
+
         public void OpenMainMenu()
         {
             _isInLoad = false;
@@ -87,41 +85,41 @@ namespace UserInterface
         public void CloseGameUI()
         {
             _lastWin = false;
-            
+
             gameClose = true;
             StartCoroutine(OpenMenuPopup(-1, true, true));
         }
-        
+
         public void BackToMainMenu()
         {
             StartCoroutine(OpenMenuPopup(0));
         }
-        
+
         public void OpenDailyBonusUI()
         {
             StartCoroutine(AnimateScale(MainMenuPopups[1], true));
         }
-        
+
         public void CloseDailyBonusUI()
         {
             StartCoroutine(AnimateScale(MainMenuPopups[1], false));
         }
-        
+
         public void OpenCalendarBonusUI()
         {
             StartCoroutine(AnimateScale(MainMenuPopups[0], true));
         }
-        
+
         public void CloseCalendarBonusUI()
         {
             StartCoroutine(AnimateScale(MainMenuPopups[0], false));
         }
-        
+
         public void OpenPotionShopUI()
         {
             StartCoroutine(OpenMenuPopup(2, false));
         }
-        
+
         public void OpenBackgroundShopUI()
         {
             StartCoroutine(OpenMenuPopup(3, false));
@@ -132,12 +130,12 @@ namespace UserInterface
             GameInstance.MapRoadNavigation.SetCurrentLevelIndex(index);
             StartCoroutine(OpenGamePopup());
         }
-        
+
         public void RestartGame()
         {
             StartCoroutine(OpenGamePopup(true));
         }
-        
+
         public void OpenGameOverPopup(bool isWin)
         {
             ResetGamePopups();
@@ -159,33 +157,27 @@ namespace UserInterface
                 _frameMainImage.sprite = _frameMainLose;
             }
         }
-        
+
         public void ContinueGame()
         {
             ResetGamePopups();
         }
-        
+
         public IEnumerator OpenMenuPopup(int index, bool toMenu = true, bool needAward = false)
         {
             TransitionAnimation();
             yield return new WaitForSeconds(0.5f);
             GameInstance.FXController.PlayMenuBackgroundParticle();
             if (toMenu)
-            {
                 GameInstance.MusicSystem.ChangeMusicClip();
-            }
             else
-            {
                 GameInstance.MusicSystem.ChangeMusicClip(false);
-            }
             GameInstance.FXController.StopFireworksParticle();
-            
+
             if (needAward)
-            {
-                GameInstance.MoneyManager.AddCoinsCurrency(/*GameInstance.GameState.CurrentAwardCount*/50);
-                //GameInstance.GameState.CurrentAwardCount = 0;
-            }
-            
+                GameInstance.MoneyManager.AddCoinsCurrency( /*GameInstance.GameState.CurrentAwardCount*/50);
+            //GameInstance.GameState.CurrentAwardCount = 0;
+
             if (gameClose)
             {
                 //GameInstance.FXController.StateBoilingFX(false);
@@ -194,10 +186,10 @@ namespace UserInterface
                 OnGameWindowClosed?.Invoke();
                 GameInstance.FXController.StopGameBackgroundParticle();
             }
-            
+
             SelectMenuPopup(index);
         }
-        
+
         private IEnumerator OpenGamePopup(bool isRestart = false)
         {
             TransitionAnimation();
@@ -208,19 +200,15 @@ namespace UserInterface
             GameInstance.FXController.StopMenuBackgroundParticle();
             ResetGamePopups();
             OpenGroup(GameMenu);
-            
+
             SelectGamePopup(0);
-            
+
             if (isRestart)
-            {
                 OnGameRestarted.Invoke();
-            }
             else
-            {
                 OnGameStarted?.Invoke();
-            }
         }
-        
+
         public IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, bool show, float duration = 0.5f)
         {
             canvasGroup.interactable = show;
@@ -271,7 +259,61 @@ namespace UserInterface
                 yield return null;
             }
 
-            canvasGroup.transform.localScale = endScale; 
+            canvasGroup.transform.localScale = endScale;
+        }
+
+        public IEnumerator AnimateScaleAndMove(RectTransform rect, bool show, Vector3 targetPosition,
+            float duration = 0.5f)
+        {
+            // Задаем конечные и промежуточные значения для масштаба
+            var endScale = show ? new Vector3(1f, 1f, 1f) : Vector3.zero;
+            var midScale = new Vector3(1.4f, 1.4f, 1.4f);
+
+            // Задаем начальные и конечные позиции для перемещения
+            var initialPosition = rect.transform.localPosition;
+            var endPosition = targetPosition;
+
+            var elapsedTime = 0f;
+
+            // Задаем начальный масштаб
+            var initialScale = show ? Vector3.one : new Vector3(1f, 1f, 1f);
+            rect.transform.localScale = initialScale;
+
+            // Анимация первой половины: от начального масштаба до промежуточного
+            while (elapsedTime < duration / 2)
+            {
+                elapsedTime += Time.deltaTime;
+
+                // Плавное изменение масштаба
+                rect.transform.localScale = Vector3.Lerp(initialScale, midScale, elapsedTime / (duration / 2));
+
+                // Плавное перемещение объекта
+                rect.transform.localPosition = Vector3.Lerp(initialPosition, (initialPosition + endPosition) / 2,
+                    elapsedTime / (duration / 2));
+
+                yield return null;
+            }
+
+            elapsedTime = 0f;
+
+            // Анимация второй половины: от промежуточного масштаба до конечного
+            while (elapsedTime < duration / 2)
+            {
+                elapsedTime += Time.deltaTime;
+
+                // Плавное изменение масштаба
+                rect.transform.localScale = Vector3.Lerp(midScale, endScale, elapsedTime / (duration / 2));
+
+                // Плавное перемещение объекта к конечной позиции
+                rect.transform.localPosition = Vector3.Lerp((initialPosition + endPosition) / 2, endPosition,
+                    elapsedTime / (duration / 2));
+
+                yield return null;
+            }
+
+            // Установка окончательных значений
+            rect.transform.localScale = endScale;
+            rect.transform.localPosition = endPosition;
         }
 
 
@@ -279,28 +321,27 @@ namespace UserInterface
         {
             _transitionAnimator.SetTrigger("Transition");
         }
-        
+
         public void OpenGroup(CanvasGroup canvasGroup)
         {
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
             canvasGroup.interactable = true;
         }
-        
+
         public void CloseGroup(CanvasGroup canvasGroup)
         {
             canvasGroup.alpha = 0f;
             canvasGroup.blocksRaycasts = false;
             canvasGroup.interactable = false;
         }
-        
+
         private void SelectMenuPopup(int selectedIndex)
         {
             OpenGroup(MainMenu);
             CloseGroup(GameMenu);
-            
+
             for (var i = 0; i < MainMenuPopups.Count; i++)
-            {
                 if (i == selectedIndex)
                 {
                     MainMenuPopups[i].alpha = 1f;
@@ -313,30 +354,28 @@ namespace UserInterface
                     MainMenuPopups[i].blocksRaycasts = false;
                     MainMenuPopups[i].interactable = false;
                 }
-            }
-            
+
             foreach (var popup in GamePopups)
             {
                 popup.alpha = 0f;
                 popup.blocksRaycasts = false;
                 popup.interactable = false;
             }
-            
+
             OnActivePopupChanged?.Invoke();
 
             if (!_firstOpened) return;
             _firstOpened = false;
-                
+
             _dailyBonus.Init();
         }
-        
+
         private void SelectGamePopup(int selectedIndex)
         {
             OpenGroup(GameMenu);
             CloseGroup(MainMenu);
-            
+
             for (var i = 0; i < GamePopups.Count; i++)
-            {
                 if (i == selectedIndex)
                 {
                     GamePopups[i].alpha = 1f;
@@ -349,15 +388,14 @@ namespace UserInterface
                     GamePopups[i].blocksRaycasts = false;
                     GamePopups[i].interactable = false;
                 }
-            }
-            
+
             foreach (var popup in MainMenuPopups)
             {
                 popup.alpha = 0f;
                 popup.blocksRaycasts = false;
                 popup.interactable = false;
             }
-            
+
             OnActivePopupChanged?.Invoke();
         }
     }
