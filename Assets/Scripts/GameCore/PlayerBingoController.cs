@@ -17,16 +17,17 @@ namespace GameCore
 
     public class PlayerBingoController : MonoBehaviour
     {
-        [Header("Bingo Columns")] 
-        [SerializeField]
+        [Header("Bingo Columns")] [SerializeField]
         private List<BingoColumn> _bingoColumns;
 
-        [Header("Second Bingo Field")] 
-        [SerializeField]
+        [Header("Second Bingo Field")] [SerializeField]
         private List<BingoColumn> _secondBingoColumns;
 
+        [Header("UI")] [SerializeField]
+        private Button _closeButtonsButton;
+        
         // Диапазоны для каждого столбца
-        private readonly int[] _columnRanges = { 1, 16, 31, 46, 61 };
+        private readonly int[] _columnRanges = {1, 16, 31, 46, 61};
 
         // Листы для хранения дочерних элементов кнопок для двух полей
         private List<TextMeshProUGUI> _firstFieldButtonTexts;
@@ -36,17 +37,17 @@ namespace GameCore
         private List<Image> _secondFieldButtonImages;
 
         // Списки использованных кнопок для каждого поля
-        private List<Button> _usedButtonsField1 = new List<Button>();
-        private List<Button> _usedButtonsField2 = new List<Button>();
+        private readonly List<Button> _usedButtonsField1 = new List<Button>();
+        private readonly List<Button> _usedButtonsField2 = new List<Button>();
 
         // Выигрышные комбинации
         private List<List<string>> _winningCombinations;
 
-        private int _playerBingoCount = 0;
-        
+        private int _playerBingoCount;
+
         public Action OnPlayerGotBingo;
         public Action OnPlayerGotSecondBingo;
-        
+
         private void Start()
         {
             _firstFieldButtonTexts = new List<TextMeshProUGUI>();
@@ -58,25 +59,26 @@ namespace GameCore
             InitializeField(_bingoColumns, _firstFieldButtonTexts, _firstFieldButtonImages);
             InitializeField(_secondBingoColumns, _secondFieldButtonTexts, _secondFieldButtonImages);
             InitializeWinningCombinations();
+            _closeButtonsButton.onClick.AddListener(CloseRandomButtons);
         }
 
         private void InitializeWinningCombinations()
         {
             _winningCombinations = new List<List<string>>
             {
-                new List<string> { "Image", "Image (4)", "Image (24)", "Image (22)" },
-                new List<string> { "Image", "Image (1)", "Image (2)", "Image (3)", "Image (4)" },
-                new List<string> { "Image (5)", "Image (6)", "Image (7)", "Image (8)", "Image (9)" },
-                new List<string> { "Image (10)", "Image (11)", "Image (12)", "Image (13)", "Image (14)" },
-                new List<string> { "Image (15)", "Image (20)", "Image (16)", "Image (21)", "Image (17)" },
-                new List<string> { "Image (22)", "Image (18)", "Image (23)", "Image (19)", "Image (24)" },
-                new List<string> { "Image", "Image (5)", "Image (10)", "Image (15)", "Image (22)" },
-                new List<string> { "Image (1)", "Image (6)", "Image (11)", "Image (20)", "Image (18)" },
-                new List<string> { "Image (2)", "Image (7)", "Image (12)", "Image (16)", "Image (23)" },
-                new List<string> { "Image (3)", "Image (8)", "Image (13)", "Image (21)", "Image (19)" },
-                new List<string> { "Image (4)", "Image (9)", "Image (14)", "Image (17)", "Image (24)" },
-                new List<string> { "Image", "Image (6)", "Image (12)", "Image (21)", "Image (24)" },
-                new List<string> { "Image (4)", "Image (8)", "Image (12)", "Image (20)", "Image (22)" }
+                new List<string> {"Image", "Image (4)", "Image (24)", "Image (22)"},
+                new List<string> {"Image", "Image (1)", "Image (2)", "Image (3)", "Image (4)"},
+                new List<string> {"Image (5)", "Image (6)", "Image (7)", "Image (8)", "Image (9)"},
+                new List<string> {"Image (10)", "Image (11)", "Image (12)", "Image (13)", "Image (14)"},
+                new List<string> {"Image (15)", "Image (20)", "Image (16)", "Image (21)", "Image (17)"},
+                new List<string> {"Image (22)", "Image (18)", "Image (23)", "Image (19)", "Image (24)"},
+                new List<string> {"Image", "Image (5)", "Image (10)", "Image (15)", "Image (22)"},
+                new List<string> {"Image (1)", "Image (6)", "Image (11)", "Image (20)", "Image (18)"},
+                new List<string> {"Image (2)", "Image (7)", "Image (12)", "Image (16)", "Image (23)"},
+                new List<string> {"Image (3)", "Image (8)", "Image (13)", "Image (21)", "Image (19)"},
+                new List<string> {"Image (4)", "Image (9)", "Image (14)", "Image (17)", "Image (24)"},
+                new List<string> {"Image", "Image (6)", "Image (12)", "Image (21)", "Image (24)"},
+                new List<string> {"Image (4)", "Image (8)", "Image (12)", "Image (20)", "Image (22)"}
             };
         }
 
@@ -84,29 +86,26 @@ namespace GameCore
             List<Image> buttonImages)
         {
             foreach (var column in bingoColumns)
+            foreach (var button in column.buttons)
             {
-                foreach (var button in column.buttons)
-                {
-                    var text = button.GetComponentInChildren<TextMeshProUGUI>();
-                    buttonTexts.Add(text);
+                var text = button.GetComponentInChildren<TextMeshProUGUI>();
+                buttonTexts.Add(text);
 
-                    // Получаем дочерний Image для анимации
-                    var childImage = button.GetComponentsInChildren<Image>();
+                // Получаем дочерний Image для анимации
+                var childImage = button.GetComponentsInChildren<Image>();
 
-                    // Ищем Image, который не является самим Image кнопки
-                    foreach (var img in childImage)
+                // Ищем Image, который не является самим Image кнопки
+                foreach (var img in childImage)
+                    if (img != button.GetComponent<Image>())
                     {
-                        if (img != button.GetComponent<Image>())
-                        {
-                            buttonImages.Add(img);
-                            break; // Добавляем только первый найденный дочерний Image
-                        }
+                        buttonImages.Add(img);
+                        break; // Добавляем только первый найденный дочерний Image
                     }
 
-                    // Добавление обработчика нажатий на кнопку
-                    int index = buttonTexts.Count - 1; // Получаем индекс текста кнопки
-                    button.onClick.AddListener(() => OnButtonClick(text, buttonImages[index], button)); // Передаем дочерний Image по индексу
-                }
+                // Добавление обработчика нажатий на кнопку
+                var index = buttonTexts.Count - 1; // Получаем индекс текста кнопки
+                button.onClick.AddListener(() =>
+                    OnButtonClick(text, buttonImages[index], button)); // Передаем дочерний Image по индексу
             }
         }
 
@@ -140,14 +139,12 @@ namespace GameCore
                 }
             }
 
-            foreach (var image in buttonImages)
-            {
-                image.transform.localScale = Vector3.zero; // Сбрасываем масштаб
-            }
-            
+            foreach (var image in buttonImages) image.transform.localScale = Vector3.zero; // Сбрасываем масштаб
+
             _usedButtonsField1.Clear();
             _usedButtonsField2.Clear();
             _playerBingoCount = 0;
+            _closeButtonsButton.interactable = true;
         }
 
         private List<int> GenerateUniqueNumbersForColumn(int min, int max)
@@ -167,8 +164,7 @@ namespace GameCore
         private void OnButtonClick(TextMeshProUGUI buttonText, Image buttonImage, Button button)
         {
             // Получаем число с кнопки
-            if (int.TryParse(buttonText.text, out int number))
-            {
+            if (int.TryParse(buttonText.text, out var number))
                 // Проверяем, есть ли это число в списке использованных чисел из BingoMainController
                 if (GameInstance.GameState.BingoMainController.IsNumberUsed(number))
                 {
@@ -184,22 +180,18 @@ namespace GameCore
                         CheckWinningCombinations(_usedButtonsField2);
                     }
                 }
-            }
         }
 
         private bool IsButtonInField(Button button, List<BingoColumn> bingoColumns)
         {
             foreach (var column in bingoColumns)
-            {
                 if (column.buttons.Contains(button))
-                {
                     return true;
-                }
-            }
             return false;
         }
 
-        private void ProcessButtonClick(TextMeshProUGUI buttonText, Image buttonImage, Button button, List<Button> usedButtons)
+        private void ProcessButtonClick(TextMeshProUGUI buttonText, Image buttonImage, Button button,
+            List<Button> usedButtons)
         {
             // Добавляем кнопку в список использованных кнопок
             if (!usedButtons.Contains(button))
@@ -216,25 +208,20 @@ namespace GameCore
         private void CheckWinningCombinations(List<Button> usedButtons)
         {
             // Собираем имена активированных кнопок
-            HashSet<string> activatedButtonNames = new HashSet<string>();
+            var activatedButtonNames = new HashSet<string>();
 
-            foreach (var usedButton in usedButtons)
-            {
-                activatedButtonNames.Add(usedButton.name); // Используем имя кнопки
-            }
+            foreach (var usedButton in usedButtons) activatedButtonNames.Add(usedButton.name); // Используем имя кнопки
 
             foreach (var winningCombination in _winningCombinations)
             {
-                bool isWinningCombination = true;
+                var isWinningCombination = true;
 
                 foreach (var name in winningCombination)
-                {
                     if (!activatedButtonNames.Contains(name))
                     {
                         isWinningCombination = false;
                         break;
                     }
-                }
 
                 if (isWinningCombination)
                 {
@@ -248,6 +235,7 @@ namespace GameCore
                         _playerBingoCount++;
                         OnPlayerGotSecondBingo?.Invoke();
                     }
+
                     Debug.Log("ПОБЕДА");
                     Debug.Log("Выигрышная комбинация: " + string.Join(", ", winningCombination));
                     // Обработка выигрышного сценария здесь
@@ -260,14 +248,14 @@ namespace GameCore
         {
             buttonImage.transform.localScale = Vector3.zero; // Сбрасываем масштаб перед началом анимации
 
-            float animationDuration = 0.22f;
-            float scaleUp = 1.5f;
-            float elapsedTime = 0f;
+            var animationDuration = 0.22f;
+            var scaleUp = 1.5f;
+            var elapsedTime = 0f;
 
             // Увеличение до 1.4
             while (elapsedTime < animationDuration)
             {
-                float scale = Mathf.Lerp(0f, scaleUp, elapsedTime / animationDuration);
+                var scale = Mathf.Lerp(0f, scaleUp, elapsedTime / animationDuration);
                 buttonImage.transform.localScale = new Vector3(scale, scale, scale);
                 elapsedTime += Time.deltaTime;
                 yield return null;
@@ -280,7 +268,7 @@ namespace GameCore
             // Уменьшение до 1
             while (elapsedTime < animationDuration)
             {
-                float scale = Mathf.Lerp(scaleUp, 1f, elapsedTime / animationDuration);
+                var scale = Mathf.Lerp(scaleUp, 1f, elapsedTime / animationDuration);
                 buttonImage.transform.localScale = new Vector3(scale, scale, scale);
                 elapsedTime += Time.deltaTime;
                 yield return null;
@@ -292,6 +280,109 @@ namespace GameCore
         public int GetBingoCount()
         {
             return _playerBingoCount;
+        }
+
+        private void CloseRandomButtons()
+        {
+            if (!GameInstance.MoneyManager.HasEnoughDiamondsCurrency(5)) return;
+            GameInstance.MoneyManager.SpendDiamondsCurrency(5);
+
+            _closeButtonsButton.interactable = false;
+
+            var fieldCount = GameInstance.GameState.GetFieldCount();
+
+            var hasWinningCombinationField1 = CheckForWinningCombination(_usedButtonsField1);
+            var hasWinningCombinationField2 = CheckForWinningCombination(_usedButtonsField2);
+
+            if (fieldCount == 1 && !hasWinningCombinationField1)
+            {
+                CloseRandomButtonsInField(_bingoColumns, _usedButtonsField1, _firstFieldButtonTexts, _firstFieldButtonImages);
+            }
+            else if (fieldCount == 2)
+            {
+                if (!hasWinningCombinationField1)
+                {
+                    CloseRandomButtonsInField(_bingoColumns, _usedButtonsField1, _firstFieldButtonTexts, _firstFieldButtonImages);
+                }
+
+                if (!hasWinningCombinationField2)
+                {
+                    CloseRandomButtonsInField(_secondBingoColumns, _usedButtonsField2, _secondFieldButtonTexts, _secondFieldButtonImages);
+                }
+            }
+        }
+
+        private void CloseRandomButtonsInField(List<BingoColumn> bingoColumns, List<Button> usedButtons, List<TextMeshProUGUI> buttonTexts, List<Image> buttonImages)
+        {
+            var availableButtons = new List<Button>();
+
+            // Собираем список неиспользованных кнопок
+            foreach (var column in bingoColumns)
+            {
+                foreach (var button in column.buttons)
+                {
+                    if (!usedButtons.Contains(button))
+                    {
+                        availableButtons.Add(button);
+                    }
+                }
+            }
+
+            for (var i = 0; i < 2 && availableButtons.Count > 0; i++)
+            {
+                var randomIndex = Random.Range(0, availableButtons.Count);
+                var buttonToClose = availableButtons[randomIndex];
+
+                // Получаем индекс кнопки в соответствующем списке
+                var buttonIndex = GetButtonIndex(buttonToClose, bingoColumns);
+
+                if (buttonIndex >= 0 && buttonIndex < buttonTexts.Count && buttonIndex < buttonImages.Count)
+                {
+                    var text = buttonTexts[buttonIndex];
+                    var image = buttonImages[buttonIndex];
+
+                    ProcessButtonClick(text, image, buttonToClose, usedButtons);
+
+                    availableButtons.RemoveAt(randomIndex);
+                }
+            }
+        }
+
+        private int GetButtonIndex(Button button, List<BingoColumn> bingoColumns)
+        {
+            int index = 0;
+            foreach (var column in bingoColumns)
+            {
+                if (column.buttons.Contains(button))
+                {
+                    return index + column.buttons.IndexOf(button);
+                }
+                index += column.buttons.Count;
+            }
+            return -1; // если кнопка не найдена
+        }
+        
+        private bool CheckForWinningCombination(List<Button> usedButtons)
+        {
+            var activatedButtonNames = new HashSet<string>();
+
+            foreach (var usedButton in usedButtons) activatedButtonNames.Add(usedButton.name);
+
+            foreach (var winningCombination in _winningCombinations)
+            {
+                var isWinningCombination = true;
+
+                foreach (var name in winningCombination)
+                    if (!activatedButtonNames.Contains(name))
+                    {
+                        isWinningCombination = false;
+                        break;
+                    }
+
+                if (isWinningCombination) return true; // Если найдена выигрышная комбинация, возвращаем true
+            }
+
+            return false; // Нет выигрышной комбинации
         }
     }
 }

@@ -21,6 +21,7 @@ namespace GameCore
         [SerializeField] private CanvasGroup _numbersUsedCanvasGroup;
         [SerializeField] private Button _oneFieldButton;
         [SerializeField] private Button _twoFieldButton;
+        [SerializeField] private Button _skipButton;
         [SerializeField] private RectTransform _firstField;
         [SerializeField] private RectTransform _secondField;
         [SerializeField] private RectTransform _offer1;
@@ -50,6 +51,7 @@ namespace GameCore
             GameInstance.UINavigation.OnGameWindowClosed += ResetGame;
             _oneFieldButton.onClick.AddListener(SelectOneFieldType);
             _twoFieldButton.onClick.AddListener(SelectTwoFieldType);
+            _skipButton.onClick.AddListener(OpenGameOverResultPopup);
             Timer.Init();
             Timer.OnTimerStopped += OpenGameField;
             Timer.OnGameTimerStopped += OpenGameOverPopup;
@@ -81,6 +83,8 @@ namespace GameCore
             _boughtTwoCard = false;
             _framesGroup.transform.localScale = new Vector3(1, 1, 1);
             ImagesAnimation.ResetImagesScale();
+            _offer1.localScale = Vector3.zero;
+            _offer2.localScale = Vector3.zero;
         }
         
         private void UpdateStarButtons()
@@ -131,8 +135,6 @@ namespace GameCore
             {
                 StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_firstField, true,
                     new Vector3(/*-636f*/-379, _firstField.transform.localScale.y, _firstField.transform.localScale.z)));
-
-                _offer1.gameObject.SetActive(true);
                 
                 StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_offer1, true,
                     new Vector3(351f, _offer1.transform.localScale.y, _offer1.transform.localScale.z)));
@@ -145,11 +147,31 @@ namespace GameCore
                 StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_secondField, true,
                     new Vector3(5f, _secondField.transform.localScale.y, _secondField.transform.localScale.z)));
                 
-                _offer1.gameObject.SetActive(true);
-                
                 StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_offer1, true,
                     new Vector3(647f, _offer1.transform.localScale.y, _offer1.transform.localScale.z)));
             }
+        }
+
+        private void OpenGameOverResultPopup()
+        {
+            if (_selectedFieldType == 1)
+            {
+                StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_offer2, true,
+                    new Vector3(351f, _offer2.transform.localScale.y, _offer2.transform.localScale.z)));
+                
+                StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_offer1, false,
+                    new Vector3(351f, _offer1.transform.localScale.y, _offer1.transform.localScale.z)));
+            }
+            else if (_selectedFieldType == 2)
+            {
+                StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_offer2, true,
+                    new Vector3(647f, _offer2.transform.localScale.y, _offer2.transform.localScale.z)));
+                
+                StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_offer1, false,
+                    new Vector3(647f, _offer1.transform.localScale.y, _offer1.transform.localScale.z)));
+            }
+
+            
         }
         
         private IEnumerator OpenGameFieldAnimation()
