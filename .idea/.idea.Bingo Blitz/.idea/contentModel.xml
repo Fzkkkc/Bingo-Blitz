@@ -87,15 +87,10 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="GameCore" t="Include">
-            <e p="BackgroundShop.cs" t="Include" />
             <e p="BingoMainController.cs" t="Include" />
-            <e p="GameResult.cs" t="Include" />
             <e p="GameState.cs" t="Include" />
             <e p="ImagesAnimation.cs" t="Include" />
             <e p="PlayerBingoController.cs" t="Include" />
-            <e p="PotionShop.cs" t="Include" />
-            <e p="RatingGame.cs" t="Include" />
-            <e p="RecipeBook.cs" t="Include" />
             <e p="Timer.cs" t="Include" />
           </e>
           <e p="Services" t="Include">
@@ -119,12 +114,12 @@
             <e p="DragBgMenu.cs" t="Include" />
             <e p="LoadingAnimation.cs" t="Include" />
             <e p="RewardedFramesCounters.cs" t="Include" />
-            <e p="RotateWithAccelerometer.cs" t="Include" />
             <e p="UINavigation.cs" t="Include" />
             <e p="UiSliderXP.cs" t="Include" />
             <e p="UITextDiamonds.cs" t="Include" />
             <e p="UITextMoney.cs" t="Include" />
             <e p="UiTextPlayerLevel.cs" t="Include" />
+            <e p="UITextXp.cs" t="Include" />
           </e>
         </e>
       </e>

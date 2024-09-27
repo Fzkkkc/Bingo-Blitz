@@ -32,11 +32,13 @@ namespace UserInterface
         private IEnumerator AnimateImages()
         {
             GameInstance.UINavigation._isInLoad = true;
+            GameInstance.MusicSystem.source.volume = 0f;
             foreach (var image in _loadImages)
             {
                 yield return StartCoroutine(AnimateImage(image));
             }
 
+            GameInstance.MusicSystem.source.volume = GameInstance.Audio.Volume;
             GameInstance.UINavigation.OpenMainMenu();
         }
 

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a63e7f8007241ee803522a96d2162ad, type: 3}
+  m_Name: Number 37
+  m_EditorClassIdentifier: 
+  options:
+  - clip: {fileID: 8300000, guid: c02cf69f9daca3841b22e559ca042d9f, type: 3}
+    volume: 0.5
+  minPitch: 0.9
+  maxPitch: 1.1
+  mixerGroup: {fileID: -7546617285802940523, guid: b85d11db43cad574c81dcf14ecf6f5fe, type: 2}

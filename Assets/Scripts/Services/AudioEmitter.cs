@@ -8,7 +8,7 @@ namespace Services
 {
     public class AudioEmitter : MonoBehaviour
     {
-        [SerializeField] protected AudioSource source;
+        [SerializeField] public AudioSource source;
         [SerializeField, HideInInspector] protected bool hasSource;
         [SerializeField] protected AudioCueScriptableObject audioCue;
 

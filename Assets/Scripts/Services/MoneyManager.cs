@@ -48,7 +48,9 @@ namespace Services
         {
             _coins = PrefsMoney;
             _diamonds = PrefsDiamonds;
-            //AddCoinsCurrency(2000);
+            _wp = PrefsWP;
+            _level = PrefsLevel;
+            AddCoinsCurrency(2000);
             AddDiamondsCurrency(20);
             //PlayerPrefs.DeleteAll();
         }
@@ -109,9 +111,6 @@ namespace Services
             PrefsMoney = _coins = (_coins + count);
             OnCoinsCurrencyChange?.Invoke(_coins);
             OnCoinsCurrencyValueChange?.Invoke();
-            
-            if(count != 0)
-                GameInstance.Audio.Play(GameInstance.Audio.CoinSound);
         }
         
         public void AddDiamondsCurrency(ulong count)
@@ -119,9 +118,6 @@ namespace Services
             PrefsDiamonds = _diamonds = (_diamonds + count);
             OnDiamondsCurrencyChange?.Invoke(_diamonds);
             OnDiamondsCurrencyValueChange?.Invoke();
-            
-            if(count != 0)
-                GameInstance.Audio.Play(GameInstance.Audio.CoinSound);
         }
         
         public void SpendCoinsCurrency(ulong count)

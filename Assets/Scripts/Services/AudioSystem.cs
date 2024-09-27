@@ -8,7 +8,9 @@ namespace Services
         private AudioSource[] sources;
         private int current;
 
-        public AudioCueScriptableObject TapSound, WinGameEndSound, LoseGameEndSound, CoinSound, BookSound;
+        public AudioCueScriptableObject TapSound, WinGameEndSound, LoseGameEndSound;
+
+        public float Volume;
         
         public void Init()
         {
@@ -19,15 +21,15 @@ namespace Services
             
         public void Play(AudioCueScriptableObject audioCue, bool usePitch = true)
         {
-            /*var s = sources[current];
+            var s = sources[current];
             if (s.isPlaying)
                 s.Stop();
             audioCue.AppendTo(s, usePitch);
+            s.volume = Volume;
             s.Play();
-
             current++;
             if (current >= maxAudioCount)
-                current = 0;*/
+                current = 0;
         }
     }
 }

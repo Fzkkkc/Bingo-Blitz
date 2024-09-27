@@ -50,7 +50,7 @@ namespace Services
                 {
                     mainLevel = i,
                     subLevelProgress = PlayerPrefs.GetInt($"MainLevel_{i}_SubProgress", 0),
-                    starCount = PlayerPrefs.GetInt($"MainLevel_{i}_Stars", -1),
+                    starCount = PlayerPrefs.GetInt($"MainLevel_{i}_Stars", 0),
                     subLevels = new List<bool>()
                 };
 
@@ -149,7 +149,7 @@ namespace Services
                     if (!_levelButtons[i].interactable)
                         childButtons[j].interactable = false;
                     else
-                        childButtons[j].interactable = starCount > -1 && j <= starCount;
+                        childButtons[j].interactable = starCount > 0 && j <= starCount;
                 }
             }
         }

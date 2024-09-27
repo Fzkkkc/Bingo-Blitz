@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Services;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,9 @@ namespace GameCore
         [SerializeField] private RectTransform _offer2;
         [SerializeField] private RectTransform _bingoImage1;
         [SerializeField] private RectTransform _bingoImage2;
+        [SerializeField] private TextMeshProUGUI _xpCountText;
+        [SerializeField] private TextMeshProUGUI _coinsCountText;
+        [SerializeField] private TextMeshProUGUI _diamondsCountText;
         
         [Header("Classes")]
         public Timer Timer;
@@ -41,6 +45,10 @@ namespace GameCore
         
         private bool _boughtOneCard = false;
         private bool _boughtTwoCard = false;
+        
+        [HideInInspector] public int XpCount;
+        [HideInInspector] public ulong CoinsCount;
+        [HideInInspector] public ulong DiamondsCount;
         
         private int StarCount => GameInstance.MapRoadNavigation
             ._levelsData[GameInstance.MapRoadNavigation._currentMainLevel].starCount;
@@ -89,6 +97,7 @@ namespace GameCore
             _offer2.localScale = Vector3.zero;
             _bingoImage2.localScale = Vector3.zero;
             _bingoImage1.localScale = Vector3.zero;
+            ResetCounters();
         }
         
         private void UpdateStarButtons()
@@ -189,6 +198,35 @@ namespace GameCore
                 StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_offer1, false,
                     new Vector3(647f, _offer1.transform.localScale.y, _offer1.transform.localScale.z)));
             }
+
+            switch (PlayerBingoController.GetBingoCount())
+            {
+                case 0:
+                    CoinsCount = 10;
+                    DiamondsCount = 0;
+                    XpCount = 25;
+                    GameInstance.MoneyManager.ChangeWPValue(XpCount);
+                    GameInstance.Audio.Play(GameInstance.Audio.LoseGameEndSound);
+                    break;
+                case 1:
+                    CoinsCount = 80;  
+                    DiamondsCount = 2;
+                    XpCount = 40;
+                    GameInstance.MapRoadNavigation.IncreaseSubLevel();
+                    GameInstance.MoneyManager.ChangeWPValue(XpCount);
+                    GameInstance.Audio.Play(GameInstance.Audio.WinGameEndSound);
+                    break;
+                case 2:
+                    CoinsCount = 160;
+                    DiamondsCount = 4;
+                    XpCount = 80;
+                    GameInstance.MapRoadNavigation.IncreaseSubLevel();
+                    GameInstance.MoneyManager.ChangeWPValue(XpCount);
+                    GameInstance.Audio.Play(GameInstance.Audio.WinGameEndSound);
+                    break;
+            }
+            
+            UpdateCountersText();
         }
         
         private IEnumerator OpenGameFieldAnimation()
@@ -270,6 +308,20 @@ namespace GameCore
         public int GetFieldCount()
         {
             return _selectedFieldType;
+        }
+
+        private void UpdateCountersText()
+        {
+            _xpCountText.text = $"x{XpCount}";
+            _coinsCountText.text = $"x{CoinsCount}";
+            _diamondsCountText.text = $"x{DiamondsCount}";
+        }
+
+        private void ResetCounters()
+        {
+            CoinsCount = 0;
+            DiamondsCount = 0;
+            XpCount = 0;
         }
     }
 }

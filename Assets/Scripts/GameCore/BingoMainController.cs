@@ -22,6 +22,8 @@ namespace GameCore
         [Header("Used Numbers Animation")]
         [SerializeField] private List<Image> _usedNumbers;
 
+        [SerializeField] private List<AudioCueScriptableObject> _numbersSounds;
+        
         public int currentBallIndex = 0; 
         public int movesCount = 0; 
         private const int MaxMoves = 11; 
@@ -29,6 +31,7 @@ namespace GameCore
 
         private List<int> usedNumbers = new List<int>();
 
+        
         private void Start()
         {
             _bingoBallTexts = new List<TextMeshProUGUI>();
@@ -58,7 +61,7 @@ namespace GameCore
             ResetBalls();
             while (GameInstance.GameState.GameRunning)
             {
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(4f);
 
                 if (movesCount < MaxMoves)
                 {
@@ -177,6 +180,7 @@ namespace GameCore
 
             StartCoroutine(AnimateUsedNumberAppearance(ball));
             StartCoroutine(AnimateUsedNumberAppearance(_usedNumbers[number - 1]));
+            GameInstance.Audio.Play(_numbersSounds[number - 1]);
         }
 
         private IEnumerator AnimateUsedNumberAppearance(Image ball)

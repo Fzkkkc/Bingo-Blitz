@@ -33,7 +33,7 @@ namespace Services
         [SerializeField] private float _animationDuration = 1f;  
 
         private bool _isOpen = false;
-        private bool _isOff = false;
+        private bool _isOn = false;
 
         private void OnValidate()
         {
@@ -60,18 +60,22 @@ namespace Services
 
         private void ChangeSoundVolume()
         {
-            if (_isOff)
+            if (_isOn)
             {
-                _isOff = false;
+                _isOn = false;
                 _soundButton.image.sprite = _volumeOffSprite;
+                GameInstance.Audio.Volume = 0f;
                 //_bgMusic.volume = 0f;
             }
             else
             {
-                _isOff = true;
+                _isOn = true;
                 _soundButton.image.sprite = _volumeOnSprite;
+                GameInstance.Audio.Volume = 0.8f;
                 //_bgMusic.volume = 0.4f;
             }
+            
+            GameInstance.MusicSystem.source.volume = GameInstance.Audio.Volume;
         }
         
         private void ShareApp()

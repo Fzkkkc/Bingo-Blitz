@@ -27,13 +27,7 @@ namespace UserInterface
         private bool gameClose;
 
         private bool _lastWin;
-
-        [SerializeField] private Button _restartButton;
-        [SerializeField] private Button _watchAdsButton;
-        [SerializeField] private Image _frameMainImage;
-        [SerializeField] private Sprite _frameMainLose;
-        [SerializeField] private Sprite _frameMainWin;
-
+        
         [SerializeField] private DailyBonus _dailyBonus;
 
         public RewardedFramesCounters RewardedFramesCounters;
@@ -114,55 +108,13 @@ namespace UserInterface
         {
             StartCoroutine(AnimateScale(MainMenuPopups[0], false));
         }
-
-        public void OpenPotionShopUI()
-        {
-            StartCoroutine(OpenMenuPopup(2, false));
-        }
-
-        public void OpenBackgroundShopUI()
-        {
-            StartCoroutine(OpenMenuPopup(3, false));
-        }
-
+        
         public void OpenGameMenu(int index)
         {
             GameInstance.MapRoadNavigation.SetCurrentLevelIndex(index);
             StartCoroutine(OpenGamePopup());
         }
-
-        public void RestartGame()
-        {
-            StartCoroutine(OpenGamePopup(true));
-        }
-
-        public void OpenGameOverPopup(bool isWin)
-        {
-            ResetGamePopups();
-            StartCoroutine(FadeCanvasGroup(GamePopups[0], true));
-            if (isWin)
-            {
-                GameInstance.FXController.PlayFireworksParticle();
-                _lastWin = true;
-                GameInstance.Audio.Play(GameInstance.Audio.WinGameEndSound);
-                _watchAdsButton.interactable = false;
-                _restartButton.gameObject.SetActive(true);
-                _frameMainImage.sprite = _frameMainWin;
-            }
-            else
-            {
-                _watchAdsButton.interactable = true;
-                _restartButton.gameObject.SetActive(false);
-                GameInstance.Audio.Play(GameInstance.Audio.LoseGameEndSound);
-                _frameMainImage.sprite = _frameMainLose;
-            }
-        }
-
-        public void ContinueGame()
-        {
-            ResetGamePopups();
-        }
-
+        
         public IEnumerator OpenMenuPopup(int index, bool toMenu = true, bool needAward = false)
         {
             TransitionAnimation();
@@ -170,12 +122,15 @@ namespace UserInterface
             GameInstance.FXController.PlayMenuBackgroundParticle();
             if (toMenu)
                 GameInstance.MusicSystem.ChangeMusicClip();
-            else
-                GameInstance.MusicSystem.ChangeMusicClip(false);
+            
             GameInstance.FXController.StopFireworksParticle();
 
             if (needAward)
-                GameInstance.MoneyManager.AddCoinsCurrency( /*GameInstance.GameState.CurrentAwardCount*/50);
+            {
+                GameInstance.MoneyManager.AddCoinsCurrency(GameInstance.GameState.CoinsCount);
+                GameInstance.MoneyManager.AddDiamondsCurrency(GameInstance.GameState.DiamondsCount);
+            }
+                
             //GameInstance.GameState.CurrentAwardCount = 0;
 
             if (gameClose)
@@ -194,6 +149,7 @@ namespace UserInterface
         {
             TransitionAnimation();
             yield return new WaitForSeconds(0.5f);
+            GameInstance.MusicSystem.ChangeMusicClip(false);
             //GameInstance.MusicSystem.ChangeMusicClip(false);
             GameInstance.FXController.StopFireworksParticle();
             GameInstance.FXController.PlayGameBackgroundParticle();

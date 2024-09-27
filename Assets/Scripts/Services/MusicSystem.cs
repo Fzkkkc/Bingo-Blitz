@@ -5,7 +5,7 @@ namespace Services
     public class MusicSystem : AudioEmitter
     {
         [SerializeField] private AudioClip _menuMusic;
-        [SerializeField] private AudioClip _shopMusic;
+        [SerializeField] private AudioClip _gameMusic;
         
         public void Init()
         {
@@ -22,21 +22,13 @@ namespace Services
             {
                 source.clip = _menuMusic;
             }
-            else if(!isMenu && source != _shopMusic)
+            else if(!isMenu && source != _gameMusic)
             {
-                source.clip = _shopMusic;
+                source.clip = _gameMusic;
             }
 
             source.Play();
             source.loop = true;
-        }
-
-        private void Update()
-        {
-            if (GameInstance.UINavigation._isInLoad)
-                source.volume = 0;
-            else
-                source.volume = 0.3f;
         }
     }
 }

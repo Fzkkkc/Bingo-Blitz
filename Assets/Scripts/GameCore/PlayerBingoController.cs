@@ -44,6 +44,9 @@ namespace GameCore
         public Action OnPlayerGotBingo;
         public Action OnPlayerGotSecondBingo;
 
+        private bool _firstBingoAnimPlayed = false;
+        private bool _secondBingoAnimPlayed = false;
+        
         private void Start()
         {
             _firstFieldButtonTexts = new List<TextMeshProUGUI>();
@@ -138,6 +141,8 @@ namespace GameCore
             _usedButtonsField2.Clear();
             _playerBingoCount = 0;
             _closeButtonsButton.interactable = true;
+            _firstBingoAnimPlayed = false;
+            _secondBingoAnimPlayed = false;
         }
 
         private List<int> GenerateUniqueNumbersForColumn(int min, int max)
@@ -213,17 +218,38 @@ namespace GameCore
 
                 if (isWinningCombination)
                 {
+                    var hasWinningCombinationField1 = CheckForWinningCombination(_usedButtonsField1);
+                    var hasWinningCombinationField2 = CheckForWinningCombination(_usedButtonsField2);
+                    
                     if (_playerBingoCount == 0)
                     {
                         _playerBingoCount++;
                         OnPlayerGotBingo?.Invoke();
-                        GameInstance.GameState.PlayBingoAnimation(1);
+                        
+                        if (hasWinningCombinationField1)
+                        {
+                            GameInstance.GameState.PlayBingoAnimation(1);
+                            _firstBingoAnimPlayed = true;
+                        }
+                        else if (hasWinningCombinationField2)
+                        {
+                            GameInstance.GameState.PlayBingoAnimation(2);
+                            _secondBingoAnimPlayed = true;
+                        }
                     }
                     else if (_playerBingoCount == 1)
                     {
                         _playerBingoCount++;
                         OnPlayerGotSecondBingo?.Invoke();
-                        GameInstance.GameState.PlayBingoAnimation(2);
+                        
+                        if (hasWinningCombinationField1 && !_firstBingoAnimPlayed)
+                        {
+                            GameInstance.GameState.PlayBingoAnimation(1);
+                        }
+                        else if (hasWinningCombinationField2 && !_secondBingoAnimPlayed)
+                        {
+                            GameInstance.GameState.PlayBingoAnimation(2);
+                        }
                     }
 
                     Debug.Log("ПОБЕДА");

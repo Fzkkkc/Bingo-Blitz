@@ -5,7 +5,35 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0ef6f77-084b-4340-af53-10dab3018586" name="Default Changelist" comment="" />
+    <list default="true" id="c0ef6f77-084b-4340-af53-10dab3018586" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/BackgroundShop.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/BackgroundShop.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameResult.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameResult.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/PotionShop.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/PotionShop.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/RatingGame.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/RatingGame.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/RecipeBook.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/RecipeBook.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/AudioCueScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/AudioCueScriptableObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/AudioEmitter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/AudioEmitter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/AudioSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/AudioSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/MapRoadNavigation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/MapRoadNavigation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/MusicSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/MusicSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/RotateWithAccelerometer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/RotateWithAccelerometer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +44,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/GridLayoutGroup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/ImageEditor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -26,24 +55,28 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextDiamonds.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UiTextPlayerLevel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UiSliderXP.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DailyBonuses.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/RewardedFramesCounters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/RewardedAdsButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendaryBonuses.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendarBonuses.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/GameInstance.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/MapRoadNavigation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/Timer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/GameInstance.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/Timer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/ImagesAnimation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextXp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/MapRoadNavigation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioCueScriptableObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioEmitter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/MusicSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" />
       </list>
     </option>
   </component>
@@ -92,7 +125,8 @@
       <workItem from="1727161868993" duration="4950000" />
       <workItem from="1727170125893" duration="12048000" />
       <workItem from="1727250581914" duration="17307000" />
-      <workItem from="1727335186365" duration="9961000" />
+      <workItem from="1727335186365" duration="25495000" />
+      <workItem from="1727420842167" duration="5821000" />
     </task>
     <servers />
   </component>
@@ -121,9 +155,9 @@
       <screen x="0" y="0" width="1707" height="912" />
     </state>
     <state x="93" y="93" width="1521" height="727" key="VCS.FileHistoryDialog/0.0.1707.912@0.0.1707.912" timestamp="1727165086782" />
-    <state x="516" y="193" width="672" height="678" key="search.everywhere.popup" timestamp="1727275637130">
+    <state x="516" y="193" width="672" height="678" key="search.everywhere.popup" timestamp="1727365510321">
       <screen x="0" y="0" width="1707" height="912" />
     </state>
-    <state x="516" y="193" width="672" height="678" key="search.everywhere.popup/0.0.1707.912@0.0.1707.912" timestamp="1727275637130" />
+    <state x="516" y="193" width="672" height="678" key="search.everywhere.popup/0.0.1707.912@0.0.1707.912" timestamp="1727365510321" />
   </component>
 </project>
