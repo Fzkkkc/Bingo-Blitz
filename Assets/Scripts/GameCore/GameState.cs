@@ -150,8 +150,10 @@ namespace GameCore
         
         private void OpenGameOverPopup()
         {
+            if(!GameRunning) return;
+            GameInstance.FXController.PlayFireworksParticle();
             GameRunning = false;
-            
+            GameInstance.Audio.Play(GameInstance.Audio.GameOverSound);
             StartCoroutine(GameInstance.UINavigation.AnimateScale(_topImageCanvasGroup, false));
             StartCoroutine(GameInstance.UINavigation.AnimateScale(_winPosesFrameCanvasGroup, false));
             StartCoroutine(GameInstance.UINavigation.AnimateScale(_numbersUsedCanvasGroup, false));
@@ -206,7 +208,6 @@ namespace GameCore
                     DiamondsCount = 0;
                     XpCount = 25;
                     GameInstance.MoneyManager.ChangeWPValue(XpCount);
-                    GameInstance.Audio.Play(GameInstance.Audio.LoseGameEndSound);
                     break;
                 case 1:
                     CoinsCount = 80;  
@@ -214,7 +215,6 @@ namespace GameCore
                     XpCount = 40;
                     GameInstance.MapRoadNavigation.IncreaseSubLevel();
                     GameInstance.MoneyManager.ChangeWPValue(XpCount);
-                    GameInstance.Audio.Play(GameInstance.Audio.WinGameEndSound);
                     break;
                 case 2:
                     CoinsCount = 160;
@@ -222,7 +222,6 @@ namespace GameCore
                     XpCount = 80;
                     GameInstance.MapRoadNavigation.IncreaseSubLevel();
                     GameInstance.MoneyManager.ChangeWPValue(XpCount);
-                    GameInstance.Audio.Play(GameInstance.Audio.WinGameEndSound);
                     break;
             }
             
@@ -236,6 +235,7 @@ namespace GameCore
             yield return new WaitForSeconds(0.7f);
             
             _readyAnimator.SetTrigger("Ready");
+            PlayReadySounds();
             StartCoroutine(ShowFieldAnimation());
         }
 
@@ -305,6 +305,19 @@ namespace GameCore
             }
         }
 
+        private void PlayReadySounds()
+        {
+            StartCoroutine(ReadySound());
+        }
+
+        private IEnumerator ReadySound()
+        { 
+            yield return new WaitForSeconds(1.1f);
+            GameInstance.Audio.Play(GameInstance.Audio.ReadySound);
+            yield return new WaitForSeconds(1.5f);
+            GameInstance.Audio.Play(GameInstance.Audio.GoSound);
+        }
+        
         public int GetFieldCount()
         {
             return _selectedFieldType;

@@ -23,6 +23,7 @@ namespace UserInterface
         public Action OnGameWindowClosed;
 
         public bool _isInLoad;
+        public bool _isInMenu = false;
         public bool _toMain;
         private bool gameClose;
 
@@ -34,6 +35,8 @@ namespace UserInterface
 
         private bool _firstOpened = true;
 
+        
+        
         public void Init()
         {
             ResetPopups();
@@ -73,7 +76,7 @@ namespace UserInterface
         public void OpenMainMenu()
         {
             _isInLoad = false;
-            StartCoroutine(OpenMenuPopup(-1));
+            StartCoroutine(OpenMenuPopup(0));
         }
 
         public void CloseGameUI()
@@ -81,7 +84,7 @@ namespace UserInterface
             _lastWin = false;
 
             gameClose = true;
-            StartCoroutine(OpenMenuPopup(-1, true, true));
+            StartCoroutine(OpenMenuPopup(0, true, true));
         }
 
         public void BackToMainMenu()
@@ -117,7 +120,11 @@ namespace UserInterface
         
         public IEnumerator OpenMenuPopup(int index, bool toMenu = true, bool needAward = false)
         {
+            if (_isInMenu) yield break;
+            
             TransitionAnimation();
+            _isInMenu = true;
+            GameInstance.GameState.GameRunning = false;
             yield return new WaitForSeconds(0.5f);
             GameInstance.FXController.PlayMenuBackgroundParticle();
             if (toMenu)
@@ -130,12 +137,9 @@ namespace UserInterface
                 GameInstance.MoneyManager.AddCoinsCurrency(GameInstance.GameState.CoinsCount);
                 GameInstance.MoneyManager.AddDiamondsCurrency(GameInstance.GameState.DiamondsCount);
             }
-                
-            //GameInstance.GameState.CurrentAwardCount = 0;
-
+            
             if (gameClose)
             {
-                //GameInstance.FXController.StateBoilingFX(false);
                 gameClose = false;
                 ResetGamePopups();
                 OnGameWindowClosed?.Invoke();
@@ -143,10 +147,16 @@ namespace UserInterface
             }
 
             SelectMenuPopup(index);
+            ResetMenuPopups();
+            if (!_firstOpened) yield break;
+            _firstOpened = false;
+
+            _dailyBonus.Init();
         }
 
         private IEnumerator OpenGamePopup(bool isRestart = false)
         {
+            _isInMenu = false;
             TransitionAnimation();
             yield return new WaitForSeconds(0.5f);
             GameInstance.MusicSystem.ChangeMusicClip(false);
@@ -216,6 +226,7 @@ namespace UserInterface
             }
 
             canvasGroup.transform.localScale = endScale;
+            
         }
 
         public IEnumerator AnimateScaleAndMove(RectTransform rect, bool show, Vector3 targetPosition,
@@ -319,11 +330,6 @@ namespace UserInterface
             }
 
             OnActivePopupChanged?.Invoke();
-
-            if (!_firstOpened) return;
-            _firstOpened = false;
-
-            _dailyBonus.Init();
         }
 
         private void SelectGamePopup(int selectedIndex)

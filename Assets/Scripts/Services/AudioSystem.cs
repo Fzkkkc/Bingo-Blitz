@@ -8,7 +8,7 @@ namespace Services
         private AudioSource[] sources;
         private int current;
 
-        public AudioCueScriptableObject TapSound, WinGameEndSound, LoseGameEndSound;
+        public AudioCueScriptableObject TapSound, GameOverSound, ReadySound, GoSound, BingoSound, DoubleBingoSound, NumberSound; 
 
         public float Volume;
         
@@ -18,7 +18,15 @@ namespace Services
             for (int i = 0; i < sources.Length; i++)
                 sources[i] = gameObject.AddComponent<AudioSource>();
         }
-            
+
+        public void ClearSounds()
+        {
+            foreach (var source in sources)
+            {
+                source.clip = null;
+            }
+        }
+        
         public void Play(AudioCueScriptableObject audioCue, bool usePitch = true)
         {
             var s = sources[current];

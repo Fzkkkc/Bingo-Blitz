@@ -36,10 +36,10 @@ namespace UserInterface
             if (ulong.TryParse(_xpText.text, out currentAmount))
             {
                 float elapsedTime = 0f;
-                while (elapsedTime < 1f)
+                while (elapsedTime < 1.29f)
                 {
                     elapsedTime += Time.deltaTime;
-                    float t = Mathf.Clamp01(elapsedTime / 1f);
+                    float t = Mathf.Clamp01(elapsedTime / 1.29f);
                     ulong intermediateAmount = (ulong)Mathf.Lerp(currentAmount, (float)newAmount, t);
                     _xpText.SetText(intermediateAmount.ToString());
                     yield return null;

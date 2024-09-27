@@ -22,7 +22,7 @@ namespace Services
         
         private ulong PrefsMoney
         {
-            get => ulong.Parse(PlayerPrefs.GetString("PREFS_Money", "0"));
+            get => ulong.Parse(PlayerPrefs.GetString("PREFS_Money", "1000"));
             set => PlayerPrefs.SetString("PREFS_Money", value.ToString());
         }
         
@@ -50,8 +50,8 @@ namespace Services
             _diamonds = PrefsDiamonds;
             _wp = PrefsWP;
             _level = PrefsLevel;
-            AddCoinsCurrency(2000);
-            AddDiamondsCurrency(20);
+            /*AddCoinsCurrency(2000);
+            AddDiamondsCurrency(20);*/
             //PlayerPrefs.DeleteAll();
         }
         

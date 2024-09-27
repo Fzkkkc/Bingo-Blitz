@@ -9,6 +9,19 @@
           <e p="PlayerPrefsEditor.cs" t="Include" />
         </e>
         <e p="ResourcesStatic" t="Include">
+          <e p="Epic Toon FX" t="Include">
+            <e p="Prefabs" t="Include">
+              <e p="Combat" t="Include">
+                <e p="Combat FX.txt" t="Include" />
+              </e>
+              <e p="Environment" t="Include">
+                <e p="Environment FX.txt" t="Include" />
+              </e>
+              <e p="Interactive" t="Include">
+                <e p="Interactive FX.txt" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="TextMesh Pro" t="Include">
             <e p="Examples &amp; Extras" t="Include">
               <e p="Fonts" t="Include">

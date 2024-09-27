@@ -75,17 +75,19 @@ namespace Services
                 //_bgMusic.volume = 0.4f;
             }
             
-            GameInstance.MusicSystem.source.volume = GameInstance.Audio.Volume;
+            GameInstance.MusicSystem.source.volume = GameInstance.Audio.Volume - 0.3f;
         }
         
         private void ShareApp()
         {
-            Application.OpenURL(_appURLString);
+            if(_appURLString != "")
+                Application.OpenURL(_appURLString);
         }
 
         private void PolicyView()
         {
-            Application.OpenURL(_policyString);
+            if(_policyString != "")
+                Application.OpenURL(_policyString);
         }
 
         private void RateApp()

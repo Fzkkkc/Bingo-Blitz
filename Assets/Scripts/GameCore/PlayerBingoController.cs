@@ -175,6 +175,7 @@ namespace GameCore
                         ProcessButtonClick(buttonText, buttonImage, button, _usedButtonsField2);
                         CheckWinningCombinations(_usedButtonsField2);
                     }
+                    GameInstance.Audio.Play(GameInstance.Audio.NumberSound);
                 }
         }
 
@@ -225,15 +226,17 @@ namespace GameCore
                     {
                         _playerBingoCount++;
                         OnPlayerGotBingo?.Invoke();
-                        
+                        GameInstance.Audio.Play(GameInstance.Audio.BingoSound);
                         if (hasWinningCombinationField1)
                         {
                             GameInstance.GameState.PlayBingoAnimation(1);
+                            GameInstance.FXController.PlayBingoParticle(1);
                             _firstBingoAnimPlayed = true;
                         }
                         else if (hasWinningCombinationField2)
                         {
                             GameInstance.GameState.PlayBingoAnimation(2);
+                            GameInstance.FXController.PlayBingoParticle(2);
                             _secondBingoAnimPlayed = true;
                         }
                     }
@@ -241,14 +244,16 @@ namespace GameCore
                     {
                         _playerBingoCount++;
                         OnPlayerGotSecondBingo?.Invoke();
-                        
+                        GameInstance.Audio.Play(GameInstance.Audio.DoubleBingoSound);
                         if (hasWinningCombinationField1 && !_firstBingoAnimPlayed)
                         {
                             GameInstance.GameState.PlayBingoAnimation(1);
+                            GameInstance.FXController.PlayBingoParticle(1);
                         }
                         else if (hasWinningCombinationField2 && !_secondBingoAnimPlayed)
                         {
                             GameInstance.GameState.PlayBingoAnimation(2);
+                            GameInstance.FXController.PlayBingoParticle(2);
                         }
                     }
 
@@ -302,6 +307,7 @@ namespace GameCore
             if (!GameInstance.MoneyManager.HasEnoughDiamondsCurrency(5)) return;
             GameInstance.MoneyManager.SpendDiamondsCurrency(5);
 
+            GameInstance.Audio.Play(GameInstance.Audio.NumberSound);
             _closeButtonsButton.interactable = false;
 
             var fieldCount = GameInstance.GameState.GetFieldCount();

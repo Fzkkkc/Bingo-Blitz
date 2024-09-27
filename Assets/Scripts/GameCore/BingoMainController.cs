@@ -50,10 +50,10 @@ namespace GameCore
         {
             StartCoroutine(SpawnBalls());
 
-            for (int i = 0; i < 30; i++)
+            /*for (int i = 0; i < 30; i++)
             {
                 usedNumbers.Add(i);
-            }
+            }*/
         }
 
         private IEnumerator SpawnBalls()
@@ -180,7 +180,9 @@ namespace GameCore
 
             StartCoroutine(AnimateUsedNumberAppearance(ball));
             StartCoroutine(AnimateUsedNumberAppearance(_usedNumbers[number - 1]));
-            GameInstance.Audio.Play(_numbersSounds[number - 1]);
+            
+            if(GameInstance.GameState.GameRunning)
+                GameInstance.Audio.Play(_numbersSounds[number - 1]);
         }
 
         private IEnumerator AnimateUsedNumberAppearance(Image ball)

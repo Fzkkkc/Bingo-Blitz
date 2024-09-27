@@ -6,12 +6,9 @@ namespace Services
     public class FXController : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _tapFX;
-        [SerializeField] private ParticleSystem _potionChanFX;
-        [SerializeField] private ParticleSystem _potionDoneWaveFX;
-        [SerializeField] private ParticleSystem _coinShowerFX;
-        [SerializeField] private ParticleSystem _coinBlastFx;
-        [SerializeField] private ParticleSystem _boilingFX;
-
+        [SerializeField] private ParticleSystem _bingoLeft;
+        [SerializeField] private ParticleSystem _bingoRight;
+        
         [SerializeField] private List<ParticleSystem> _particleSystems;
         [SerializeField] private List<ParticleSystem> _backgroundGameParticleSystems;
         [SerializeField] private List<ParticleSystem> _backgroundMenuParticleSystems;
@@ -43,14 +40,29 @@ namespace Services
             }
 
         }
+
+        public void PlayBingoParticle(int indexBingo)
+        {
+            switch (indexBingo)
+            {
+                case 1:
+                    _bingoLeft.gameObject.SetActive(true);
+                    _bingoLeft.Play();
+                    break;
+                case 2:
+                    _bingoRight.gameObject.SetActive(true);
+                    _bingoRight.Play();
+                    break;
+            }
+        }
         
         public void PlayGameBackgroundParticle()
         {
-            /*foreach (var particle in _backgroundGameParticleSystems)
+            foreach (var particle in _backgroundGameParticleSystems)
             {
                 particle.gameObject.SetActive(true);
                 particle.Play();
-            }*/
+            }
         }
         
         public void StopGameBackgroundParticle()
@@ -72,10 +84,10 @@ namespace Services
         
         public void StopFireworksParticle()
         {
-            /*foreach (var particle in _fireworksFX)
+            foreach (var particle in _fireworksFX)
             {
                 particle.gameObject.SetActive(false);
-            }*/
+            }
         }
         
         public void StopMenuHideBackgroundParticle()
@@ -88,11 +100,11 @@ namespace Services
 
         public void PlayMenuBackgroundParticle()
         {
-            /*foreach (var particle in _backgroundMenuParticleSystems)
+            foreach (var particle in _backgroundMenuParticleSystems)
             {
                 particle.gameObject.SetActive(true);
                 particle.Play();
-            }*/
+            }
         }
 
         public void StopMenuBackgroundParticle()
@@ -110,34 +122,6 @@ namespace Services
             _tapFX.Play();
         }
         
-        public void PlayChanPotionFX(Color startColor)
-        {
-            var mainModule = _potionChanFX.main;
-            mainModule.startColor = startColor;
-            _potionChanFX.gameObject.SetActive(true);
-            _potionChanFX.Play();
-        }
-        
-        public void PlayDonePotionFX()
-        {
-            _potionDoneWaveFX.gameObject.SetActive(true);
-            _potionDoneWaveFX.Play();
-        }
-
-        public void PlayCoinsFX()
-        {
-            _coinBlastFx.gameObject.SetActive(true);
-            _coinBlastFx.Play();
-            _coinShowerFX.gameObject.SetActive(true);
-            _coinShowerFX.Play();
-        }
-        
-        public void ChangeBoilingFXColor(Color startColor)
-        {
-            var mainModule = _boilingFX.main;
-            mainModule.startColor = startColor;
-        }
-        
         private void DisableParticles()
         {
             AddChildTransformsToBackgroundGameParticleSystems();
@@ -146,11 +130,9 @@ namespace Services
             _particleSystems.AddRange(_backgroundGameParticleSystems);
             _particleSystems.AddRange(_backgroundMenuParticleSystems);
             _particleSystems.Add(_tapFX);
-            _particleSystems.Add(_potionChanFX);
-            _particleSystems.Add(_potionDoneWaveFX);
-            _particleSystems.Add(_coinBlastFx);
-            _particleSystems.Add(_coinShowerFX);
-            _particleSystems.Add(_boilingFX);
+            _particleSystems.Add(_bingoLeft);
+            _particleSystems.Add(_bingoRight);
+           
             foreach (var particle in _particleSystems)
             {
                 particle.gameObject.SetActive(false);
@@ -159,7 +141,7 @@ namespace Services
         
         public void Init()
         {
-            //DisableParticles();
+            DisableParticles();
         }
     }
 }

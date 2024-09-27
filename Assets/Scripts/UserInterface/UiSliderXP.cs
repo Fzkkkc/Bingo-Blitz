@@ -34,7 +34,7 @@ namespace UserInterface
         {
             float currentAmount = _statSlider.value; 
             float elapsedTime = 0f;
-            float duration = 0.7f;
+            float duration = 1.29f;
 
             float maxValue = _statSlider.maxValue;
 
