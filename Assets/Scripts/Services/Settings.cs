@@ -71,11 +71,11 @@ namespace Services
             {
                 _isOn = true;
                 _soundButton.image.sprite = _volumeOnSprite;
-                GameInstance.Audio.Volume = 0.8f;
+                GameInstance.Audio.Volume = 1f;
                 //_bgMusic.volume = 0.4f;
             }
             
-            GameInstance.MusicSystem.source.volume = GameInstance.Audio.Volume - 0.3f;
+            GameInstance.MusicSystem.source.volume = GameInstance.Audio.Volume - 0.5f;
         }
         
         private void ShareApp()

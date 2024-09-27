@@ -123,6 +123,7 @@
           <e p="UserInterface" t="Include">
             <e p="ButtonFX.cs" t="Include" />
             <e p="CalendarBonuses.cs" t="Include" />
+            <e p="CanvasScalerAdjuster.cs" t="Include" />
             <e p="DailyBonuses.cs" t="Include" />
             <e p="DragBgMenu.cs" t="Include" />
             <e p="LoadingAnimation.cs" t="Include" />

@@ -156,7 +156,7 @@ namespace GameCore
             else if (number <= 30)
             {
                 spriteIndex = 1; 
-                textColor = Color.yellow; 
+                textColor = new Color(0.87f, 0.60f, 0.11f);
             }
             else if (number <= 45)
             {

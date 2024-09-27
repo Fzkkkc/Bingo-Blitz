@@ -15,12 +15,15 @@ namespace UserInterface
         [SerializeField] private float _maxScale = 140f;      
         [SerializeField] private float _minScale = 120f;
         [SerializeField] private bool _isTest = false;
+        [SerializeField] private CanvasScaler _canvasScaler;
+        
         
         private void Start()
         {
             if (_isTest)
             {
                 GameInstance.UINavigation.OpenGameMenu(0);
+                _canvasScaler.matchWidthOrHeight = 0f;
             }
             else
             {

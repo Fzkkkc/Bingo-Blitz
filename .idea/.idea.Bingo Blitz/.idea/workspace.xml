@@ -8,19 +8,13 @@
     <list default="true" id="c0ef6f77-084b-4340-af53-10dab3018586" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/MenuUI.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/MenuUI.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Particles.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Particles.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Game.spriteatlasv2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Game.spriteatlasv2.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Menu.spriteatlasv2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Menu.spriteatlasv2.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/AudioSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/AudioSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextXp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextXp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UiSliderXP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UiSliderXP.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +26,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/GridLayoutGroup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C5ED7824-3908-4EF1-BC2A-D85EEC89E9FE/ad/b850d2d0/SystemInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/ImageEditor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -54,9 +49,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioCueScriptableObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioEmitter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/MusicSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" />
@@ -65,6 +58,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextXp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CanvasScalerAdjuster.cs" />
       </list>
     </option>
   </component>
@@ -114,7 +110,7 @@
       <workItem from="1727170125893" duration="12048000" />
       <workItem from="1727250581914" duration="17307000" />
       <workItem from="1727335186365" duration="25495000" />
-      <workItem from="1727420842167" duration="12098000" />
+      <workItem from="1727420842167" duration="14695000" />
     </task>
     <servers />
   </component>
