@@ -49,11 +49,6 @@ namespace GameCore
         public void StartSpawnBalls()
         {
             StartCoroutine(SpawnBalls());
-
-            /*for (int i = 0; i < 30; i++)
-            {
-                usedNumbers.Add(i);
-            }*/
         }
 
         private IEnumerator SpawnBalls()

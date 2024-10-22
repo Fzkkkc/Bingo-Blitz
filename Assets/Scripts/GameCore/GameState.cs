@@ -164,7 +164,7 @@ namespace GameCore
             if (_selectedFieldType == 1)
             {
                 StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_firstField, true,
-                    new Vector3(/*-636f*/-379, _firstField.transform.localScale.y, _firstField.transform.localScale.z)));
+                    new Vector3(-379, _firstField.transform.localScale.y, _firstField.transform.localScale.z)));
                 
                 StartCoroutine(GameInstance.UINavigation.AnimateScaleAndMove(_offer1, true,
                     new Vector3(351f, _offer1.transform.localScale.y, _offer1.transform.localScale.z)));
@@ -204,20 +204,20 @@ namespace GameCore
             switch (PlayerBingoController.GetBingoCount())
             {
                 case 0:
-                    CoinsCount = 10;
+                    CoinsCount = 80;
                     DiamondsCount = 0;
                     XpCount = 25;
                     GameInstance.MoneyManager.ChangeWPValue(XpCount);
                     break;
                 case 1:
-                    CoinsCount = 80;  
+                    CoinsCount = 300;  
                     DiamondsCount = 2;
                     XpCount = 40;
                     GameInstance.MapRoadNavigation.IncreaseSubLevel();
                     GameInstance.MoneyManager.ChangeWPValue(XpCount);
                     break;
                 case 2:
-                    CoinsCount = 160;
+                    CoinsCount = 450;
                     DiamondsCount = 4;
                     XpCount = 80;
                     GameInstance.MapRoadNavigation.IncreaseSubLevel();

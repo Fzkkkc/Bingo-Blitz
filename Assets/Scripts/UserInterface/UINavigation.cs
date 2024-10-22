@@ -34,8 +34,6 @@ namespace UserInterface
         public RewardedFramesCounters RewardedFramesCounters;
 
         private bool _firstOpened = true;
-
-        
         
         public void Init()
         {
@@ -160,7 +158,6 @@ namespace UserInterface
             TransitionAnimation();
             yield return new WaitForSeconds(0.5f);
             GameInstance.MusicSystem.ChangeMusicClip(false);
-            //GameInstance.MusicSystem.ChangeMusicClip(false);
             GameInstance.FXController.StopFireworksParticle();
             GameInstance.FXController.PlayGameBackgroundParticle();
             GameInstance.FXController.StopMenuBackgroundParticle();
@@ -174,27 +171,7 @@ namespace UserInterface
             else
                 OnGameStarted?.Invoke();
         }
-
-        public IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, bool show, float duration = 0.5f)
-        {
-            canvasGroup.interactable = show;
-            canvasGroup.blocksRaycasts = show;
-
-            var startAlpha = canvasGroup.alpha;
-            var elapsedTime = 0f;
-
-            var finishValue = show ? 1f : 0f;
-
-            while (elapsedTime < duration)
-            {
-                elapsedTime += Time.deltaTime;
-                canvasGroup.alpha = Mathf.Lerp(startAlpha, finishValue, elapsedTime / duration);
-                yield return null;
-            }
-
-            canvasGroup.alpha = finishValue;
-        }
-
+        
         public IEnumerator AnimateScale(CanvasGroup canvasGroup, bool show, float duration = 0.7f)
         {
             canvasGroup.alpha = 1f;
@@ -232,29 +209,23 @@ namespace UserInterface
         public IEnumerator AnimateScaleAndMove(RectTransform rect, bool show, Vector3 targetPosition,
             float duration = 0.5f)
         {
-            // Задаем конечные и промежуточные значения для масштаба
             var endScale = show ? new Vector3(1f, 1f, 1f) : Vector3.zero;
             var midScale = new Vector3(1.4f, 1.4f, 1.4f);
 
-            // Задаем начальные и конечные позиции для перемещения
             var initialPosition = rect.transform.localPosition;
             var endPosition = targetPosition;
 
             var elapsedTime = 0f;
 
-            // Задаем начальный масштаб
             var initialScale = show ? Vector3.one : new Vector3(1f, 1f, 1f);
             rect.transform.localScale = initialScale;
 
-            // Анимация первой половины: от начального масштаба до промежуточного
             while (elapsedTime < duration / 2)
             {
                 elapsedTime += Time.deltaTime;
 
-                // Плавное изменение масштаба
                 rect.transform.localScale = Vector3.Lerp(initialScale, midScale, elapsedTime / (duration / 2));
 
-                // Плавное перемещение объекта
                 rect.transform.localPosition = Vector3.Lerp(initialPosition, (initialPosition + endPosition) / 2,
                     elapsedTime / (duration / 2));
 
@@ -263,22 +234,18 @@ namespace UserInterface
 
             elapsedTime = 0f;
 
-            // Анимация второй половины: от промежуточного масштаба до конечного
             while (elapsedTime < duration / 2)
             {
                 elapsedTime += Time.deltaTime;
 
-                // Плавное изменение масштаба
                 rect.transform.localScale = Vector3.Lerp(midScale, endScale, elapsedTime / (duration / 2));
 
-                // Плавное перемещение объекта к конечной позиции
                 rect.transform.localPosition = Vector3.Lerp((initialPosition + endPosition) / 2, endPosition,
                     elapsedTime / (duration / 2));
 
                 yield return null;
             }
 
-            // Установка окончательных значений
             rect.transform.localScale = endScale;
             rect.transform.localPosition = endPosition;
         }

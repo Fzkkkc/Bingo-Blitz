@@ -26,7 +26,6 @@ namespace Services
         
         protected override void Awake()
         { 
-            //PlayerPrefs.DeleteAll();
             base.Awake();
             _uiNavigation.Init();
             _fxController.Init();

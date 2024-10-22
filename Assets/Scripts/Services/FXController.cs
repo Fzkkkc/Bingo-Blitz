@@ -90,14 +90,6 @@ namespace Services
             }
         }
         
-        public void StopMenuHideBackgroundParticle()
-        {
-            foreach (var particle in _backgroundMenuHideParticleSystems)
-            {
-                particle.gameObject.SetActive(false);
-            }
-        }
-
         public void PlayMenuBackgroundParticle()
         {
             foreach (var particle in _backgroundMenuParticleSystems)

@@ -22,7 +22,7 @@ namespace Services
         
         private ulong PrefsMoney
         {
-            get => ulong.Parse(PlayerPrefs.GetString("PREFS_Money", "1000"));
+            get => ulong.Parse(PlayerPrefs.GetString("PREFS_Money", "1500"));
             set => PlayerPrefs.SetString("PREFS_Money", value.ToString());
         }
         

@@ -201,7 +201,6 @@ namespace GameCore
 
         private void CheckWinningCombinations(List<Button> usedButtons)
         {
-            // Собираем имена активированных кнопок
             var activatedButtonNames = new HashSet<string>();
 
             foreach (var usedButton in usedButtons) activatedButtonNames.Add(usedButton.name); 

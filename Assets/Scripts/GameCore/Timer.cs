@@ -91,7 +91,7 @@ namespace GameCore
         {
             OnGameTimerStopped?.Invoke();
             isRunningGame = false;
-            UpdateBingoCountText(0);  // Когда время игры закончилось, бинго всегда 0
+            UpdateBingoCountText(0);  
         }
 
         public void StopTimer()
@@ -125,7 +125,7 @@ namespace GameCore
 
         private void UpdateGameTimerText()
         {
-            UpdateBingoCountText();  // Обновляем количество бинго при каждом обновлении времени
+            UpdateBingoCountText();  
         }
 
         private void DecreaseGameTimer()

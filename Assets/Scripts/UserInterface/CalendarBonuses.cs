@@ -66,13 +66,13 @@ namespace UserInterface
         {
             switch (rewardType)
             {
-                case 1: // WP
+                case 1: 
                     GameInstance.MoneyManager.ChangeWPValue(10);
                     break;
-                case 2: // Coins
+                case 2: 
                     GameInstance.MoneyManager.AddCoinsCurrency(10);
                     break;
-                case 3: // Diamonds
+                case 3: 
                     GameInstance.MoneyManager.AddDiamondsCurrency(5);
                     break;
             }

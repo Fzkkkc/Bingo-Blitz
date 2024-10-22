@@ -6,14 +6,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0ef6f77-084b-4340-af53-10dab3018586" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Particles.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Particles.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Game.spriteatlasv2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Game.spriteatlasv2.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Menu.spriteatlasv2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Menu.spriteatlasv2.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/Timer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/GameInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/GameInstance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/ButtonFX.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/ButtonFX.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendarBonuses.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendarBonuses.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,26 +45,27 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/RewardedFramesCounters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/RewardedAdsButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendaryBonuses.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendarBonuses.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/GameInstance.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/Timer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/ImagesAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/MapRoadNavigation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioCueScriptableObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioEmitter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/MusicSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/AudioSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UiSliderXP.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextXp.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/LoadingAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CanvasScalerAdjuster.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/Timer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Services/GameInstance.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendarBonuses.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ButtonFX.cs" />
       </list>
     </option>
   </component>
@@ -110,7 +115,12 @@
       <workItem from="1727170125893" duration="12048000" />
       <workItem from="1727250581914" duration="17307000" />
       <workItem from="1727335186365" duration="25495000" />
-      <workItem from="1727420842167" duration="14695000" />
+      <workItem from="1727420842167" duration="15638000" />
+      <workItem from="1727684253033" duration="1825000" />
+      <workItem from="1727870749511" duration="1269000" />
+      <workItem from="1728036144376" duration="651000" />
+      <workItem from="1728285463232" duration="1317000" />
+      <workItem from="1729586098988" duration="1795000" />
     </task>
     <servers />
   </component>
