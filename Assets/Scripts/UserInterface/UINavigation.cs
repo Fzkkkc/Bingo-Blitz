@@ -94,6 +94,16 @@ namespace UserInterface
         {
             StartCoroutine(AnimateScale(MainMenuPopups[1], true));
         }
+        
+        public void OpenBankUI()
+        {
+            StartCoroutine(AnimateScale(MainMenuPopups[2], true));
+        }
+        
+        public void CloseBankUI()
+        {
+            StartCoroutine(AnimateScale(MainMenuPopups[2], false));
+        }
 
         public void CloseDailyBonusUI()
         {
@@ -174,6 +184,7 @@ namespace UserInterface
         
         public IEnumerator AnimateScale(CanvasGroup canvasGroup, bool show, float duration = 0.7f)
         {
+            yield return new WaitForSeconds(0.2f);
             canvasGroup.alpha = 1f;
             canvasGroup.interactable = show;
             canvasGroup.blocksRaycasts = show;

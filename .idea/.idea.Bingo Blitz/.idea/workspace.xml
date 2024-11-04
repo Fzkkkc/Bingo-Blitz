@@ -6,19 +6,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0ef6f77-084b-4340-af53-10dab3018586" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bingo Blitz/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880888.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880888.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880888.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880888.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880911.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880911.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880911.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880911.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880912.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880912.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880912.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880912.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880915.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880915.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880915.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/GameUI/Frame 1597880915.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880892.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880892.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880894.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880894.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880895.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880895.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880896.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880896.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880929.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880929.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880930.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 1597880930.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 6.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Frame 6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Menu.spriteatlasv2" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/Menu.spriteatlasv2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/БГ.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/SpritesNew/Loading&amp;MenuUI/БГ.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResourcesStatic/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCore/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCore/Timer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/GameInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/GameInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/ButtonFX.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/ButtonFX.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendarBonuses.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendarBonuses.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextMoney.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextMoney.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +48,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/ImageEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/GridLayoutGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C5ED7824-3908-4EF1-BC2A-D85EEC89E9FE/ad/b850d2d0/SystemInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/ImageEditor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -57,15 +76,18 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CanvasScalerAdjuster.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/Settings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/MoneyManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBingoController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/Timer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/FXController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Services/GameInstance.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/CalendarBonuses.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ButtonFX.cs" />
+        <option value="$PROJECT_DIR$/../../BitBucket/App891/codemagic.yaml" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UINavigation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/GameState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/PlayerBankSaves.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UITextMoney.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCore/BingoMainController.cs" />
       </list>
     </option>
   </component>
@@ -120,7 +142,9 @@
       <workItem from="1727870749511" duration="1269000" />
       <workItem from="1728036144376" duration="651000" />
       <workItem from="1728285463232" duration="1317000" />
-      <workItem from="1729586098988" duration="1795000" />
+      <workItem from="1729586098988" duration="2468000" />
+      <workItem from="1729682413899" duration="6000" />
+      <workItem from="1730716226980" duration="2596000" />
     </task>
     <servers />
   </component>

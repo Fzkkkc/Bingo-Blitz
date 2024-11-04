@@ -103,6 +103,7 @@
             <e p="BingoMainController.cs" t="Include" />
             <e p="GameState.cs" t="Include" />
             <e p="ImagesAnimation.cs" t="Include" />
+            <e p="PlayerBankSaves.cs" t="Include" />
             <e p="PlayerBingoController.cs" t="Include" />
             <e p="Timer.cs" t="Include" />
           </e>

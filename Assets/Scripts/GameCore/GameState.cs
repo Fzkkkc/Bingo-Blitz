@@ -38,6 +38,7 @@ namespace GameCore
         public ImagesAnimation ImagesAnimation;
         public PlayerBingoController PlayerBingoController;
         public BingoMainController BingoMainController;
+        public PlayerBankSaves PlayerBankSaves;
         
         [Header("Variables")] 
         [SerializeField] private int _selectedFieldType = 0;
@@ -204,7 +205,7 @@ namespace GameCore
             switch (PlayerBingoController.GetBingoCount())
             {
                 case 0:
-                    CoinsCount = 80;
+                    CoinsCount = 80; 
                     DiamondsCount = 0;
                     XpCount = 25;
                     GameInstance.MoneyManager.ChangeWPValue(XpCount);
@@ -226,6 +227,7 @@ namespace GameCore
             }
             
             UpdateCountersText();
+            PlayerBankSaves.AddCoins((int) CoinsCount);
         }
         
         private IEnumerator OpenGameFieldAnimation()

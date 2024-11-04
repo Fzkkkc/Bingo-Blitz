@@ -54,6 +54,7 @@ namespace GameCore
         private IEnumerator SpawnBalls()
         {
             ResetBalls();
+            
             while (GameInstance.GameState.GameRunning)
             {
                 yield return new WaitForSeconds(4f);

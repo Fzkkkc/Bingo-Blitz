@@ -9,6 +9,8 @@ namespace UserInterface
     {
         [SerializeField] private TextMeshProUGUI _currencyText;
 
+        [SerializeField] private bool _isBank;
+        
         private void OnValidate()
         {
             _currencyText ??= GetComponentInChildren<TextMeshProUGUI>();
@@ -49,6 +51,11 @@ namespace UserInterface
             else
             {
                 _currencyText.SetText(newAmount.ToString());
+            }
+
+            if (_isBank && newAmount > 1000)
+            {
+                _currencyText.text = newAmount.ToString() + ",000";
             }
         }
     }
